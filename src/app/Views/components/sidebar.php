@@ -3,8 +3,8 @@
     <div class="navbar-wrapper">
         <div class="m-header">
             <a href="<?= base_url() ?>" class="b-brand text-primary">
-                <!-- ========   Change your logo from here   ============ -->
-                <img src="<?= $themePath ?>/assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
+                <img src="<?= base_url('assets/images/icon-admin.svg') ?>" class="img-fluid logo-lg" alt="logo">
+
                 <span class="badge bg-light-success rounded-pill ms-2 theme-version">v1.0.0</span>
             </a>
         </div>
