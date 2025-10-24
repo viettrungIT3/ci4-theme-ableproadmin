@@ -1,0 +1,113 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  issue_comment:
+    types: [created]
+
+permissions: write-all
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: secret
+          MYSQL_DATABASE: ci4_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, dom, fileinfo, mysql, pdo_mysql
+          coverage: xdebug
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: |
+          cd src
+          composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHP CS Fixer
+        run: |
+          cd src
+          ./vendor/bin/php-cs-fixer fix --dry-run --diff
+
+      - name: Run PHPStan
+        run: |
+          cd src
+          ./vendor/bin/phpstan analyse
+
+      - name: Run PHPUnit tests
+        run: |
+          cd src
+          ./vendor/bin/phpunit --coverage-clover=coverage.xml
+        env:
+          CI_ENVIRONMENT: testing
+          database.tests.hostname: 127.0.0.1
+          database.tests.database: ci4_test
+          database.tests.username: root
+          database.tests.password: secret
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: src/coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+
+  gemini-code-review:
+    runs-on: ubuntu-latest
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/gemini-review')
+    steps:
+      - name: PR Info
+        run: |
+          echo "Comment: ${{ github.event.comment.body }}"
+          echo "Issue Number: ${{ github.event.issue.number }}"
+          echo "Repository: ${{ github.repository }}"
+
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get PR Details
+        id: pr
+        run: |
+          PR_JSON=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.issue.number }})
+          echo "head_sha=$(echo $PR_JSON | jq -r .head.sha)" >> $GITHUB_OUTPUT
+          echo "base_sha=$(echo $PR_JSON | jq -r .base.sha)" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: truongnh1992/gemini-ai-code-reviewer@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-1.5-pro-002
+          INPUT_EXCLUDE: "*.md,*.txt,package-lock.json,*.yml,*.yaml"

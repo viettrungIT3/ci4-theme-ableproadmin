@@ -1,0 +1,74 @@
+# Database data
+db_data/*
+!db_data/.gitkeep
+
+# Apache logs
+apache_log/*
+!apache_log/.gitkeep
+
+# VS Code
+.vscode/*
+
+# Composer
+src/composer.lock
+
+# Environment files
+.env
+src/.env
+*.env.local
+*.env.*.local
+*.env.bak
+*.env
+
+# Docker artifacts
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Editor/OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Thumbs.db:encryptable
+
+# Backups/DB dumps
+_db/*
+_db/*.sql
+_db/*.sql.gz
+
+# Logs
+*.log
+logs/*
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# IDE files
+*.swp
+*.swo
+*~
+
+# Node modules (if using frontend build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PHP CS Fixer cache
+.php-cs-fixer.cache
+
+# Pre-commit hooks
+.pre-commit-config.yaml
+
+# GitHub workflows (if not needed)
+.github/workflows/*
+!.github/workflows/.gitkeep

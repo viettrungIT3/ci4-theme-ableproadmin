@@ -1,0 +1,64 @@
+services:
+    codeigniter4-services:
+        build:
+            context: .
+            dockerfile: docker/apache/Dockerfile
+            target: development
+            args:
+                uid: ${UID}
+        environment:
+            - APACHE_RUN_USER=#${UID}
+            - APACHE_RUN_GROUP=#${UID}
+            - TZ=${TZ:-Asia/Ho_Chi_Minh}
+            - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-256M}
+        restart: unless-stopped
+        volumes:
+            - ./src:/var/www/html
+            - ./apache_log:/var/log/apache2
+        ports:
+            - ${SERVICE_PORT}:80
+        depends_on:
+            codeigniter4-db:
+                condition: service_healthy
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost/"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+        networks:
+            codeigniter4:
+                aliases:
+                    - codeigniter4.localhost.com
+    codeigniter4-db:
+        platform: linux/x86_64
+        build:
+            context: .
+            dockerfile: docker/mysql/Dockerfile
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            TZ: ${TZ:-Asia/Ho_Chi_Minh}
+            MYSQL_INNODB_BUFFER_POOL_SIZE: ${MYSQL_INNODB_BUFFER_POOL_SIZE:-128M}
+        restart: unless-stopped
+        volumes:
+            - ./db_data:/var/lib/mysql
+            - ./_db:/backup
+        ports:
+            - ${MYSQL_PORT}:3306
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+            start_period: 30s
+        networks:
+            codeigniter4:
+                aliases:
+                    - "codeigniter4-db.localhost.com"
+    
+
+volumes:
+    db_data:
+networks:
+    codeigniter4:

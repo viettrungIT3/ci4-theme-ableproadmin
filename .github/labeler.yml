@@ -1,0 +1,19 @@
+# Auto-apply labels based on files or branch names
+
+"area:backend":
+  - "src/**"
+
+"area:workflows":
+  - ".github/**"
+
+"area:scripts":
+  - "scripts/**"
+
+"feat":
+  - any:
+      - "branch=~^\d{2}-feat/.*"
+
+"auth":
+  - any:
+      - "src/app/Controllers/Api/Auth.php"
+      - "src/app/Filters/**"

@@ -1,0 +1,12 @@
+# Code owners by area
+# Syntax: pattern  @owner1 @owner2
+
+# Backend (PHP / CI4)
+/src/app/** @viettrungIT3
+/src/public/** @viettrungIT3
+
+# Workflows
+/.github/** @viettrungIT3
+
+# Scripts
+/scripts/** @viettrungIT3

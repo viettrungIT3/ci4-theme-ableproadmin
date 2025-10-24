@@ -1,0 +1,36 @@
+# Production Docker Compose override
+services:
+  codeigniter4-services:
+    build:
+      target: production
+    environment:
+      - APACHE_RUN_USER=appuser
+      - APACHE_RUN_GROUP=www-data
+    volumes:
+      # Remove development volume mounts for production
+      - ./apache_log:/var/log/apache2:rw
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  codeigniter4-db:
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - db_data_prod:/var/lib/mysql
+      - ./_db:/backup:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  db_data_prod:
