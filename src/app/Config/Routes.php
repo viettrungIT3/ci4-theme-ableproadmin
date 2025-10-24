@@ -7,7 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // Web routes
-$routes->get('/', 'Home::index');
 require APPPATH . 'Config/Routes/web.php';
 
 // API routes

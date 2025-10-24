@@ -7,11 +7,15 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-// Dashboard routes
+// Home route
 $routes->get('/', 'Dashboard::index');
-$routes->get('/dashboard', 'Dashboard::index');
-$routes->get('/dashboard/analytics', 'Dashboard::analytics');
-$routes->get('/dashboard/finance', 'Dashboard::finance');
+
+// Dashboard routes
+$routes->group('dashboard', function ($routes) {
+    $routes->get('/', 'Dashboard::index');
+    $routes->get('/analytics', 'Dashboard::analytics');
+    $routes->get('/finance', 'Dashboard::finance');
+});
 
 // User management routes
 $routes->group('users', function ($routes) {

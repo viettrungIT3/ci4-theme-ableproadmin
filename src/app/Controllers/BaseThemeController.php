@@ -3,17 +3,20 @@
 namespace App\Controllers;
 
 use App\Libraries\ThemeService;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 abstract class BaseThemeController extends BaseController
 {
     protected $themeService;
     protected $data = [];
 
-    public function __construct()
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        parent::__construct();
+        parent::initController($request, $response, $logger);
         $this->themeService = new ThemeService();
-
+        
         // Set common data for all views
         $this->data['theme'] = $this->themeService->getThemeConfig();
         $this->data['themePath'] = $this->themeService->getThemePath();
