@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Libraries\ThemeService;
+
+abstract class BaseThemeController extends BaseController
+{
+    protected $themeService;
+    protected $data = [];
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->themeService = new ThemeService();
+
+        // Set common data for all views
+        $this->data['theme'] = $this->themeService->getThemeConfig();
+        $this->data['themePath'] = $this->themeService->getThemePath();
+        $this->data['bodyClasses'] = $this->themeService->getBodyClasses();
+    }
+
+    /**
+     * Render view with theme layout
+     */
+    protected function renderView(string $view, array $data = [], string $layout = 'main'): string
+    {
+        $this->data = array_merge($this->data, $data);
+
+        return view("layouts/{$layout}", [
+            'content' => view($view, $this->data),
+            'data' => $this->data
+        ]);
+    }
+
+    /**
+     * Render admin view
+     */
+    protected function renderAdminView(string $view, array $data = []): string
+    {
+        return $this->renderView($view, $data, 'admin');
+    }
+
+    /**
+     * Render auth view
+     */
+    protected function renderAuthView(string $view, array $data = []): string
+    {
+        return $this->renderView($view, $data, 'auth');
+    }
+
+    /**
+     * Get theme service
+     */
+    protected function getThemeService(): ThemeService
+    {
+        return $this->themeService;
+    }
+
+    /**
+     * Set page title
+     */
+    protected function setPageTitle(string $title): void
+    {
+        $this->data['pageTitle'] = $title;
+    }
+
+    /**
+     * Set breadcrumb
+     */
+    protected function setBreadcrumb(array $breadcrumb): void
+    {
+        $this->data['breadcrumb'] = $breadcrumb;
+    }
+
+    /**
+     * Add CSS file
+     */
+    protected function addCss(string $file): void
+    {
+        if (!isset($this->data['additionalCss'])) {
+            $this->data['additionalCss'] = [];
+        }
+        $this->data['additionalCss'][] = $file;
+    }
+
+    /**
+     * Add JS file
+     */
+    protected function addJs(string $file): void
+    {
+        if (!isset($this->data['additionalJs'])) {
+            $this->data['additionalJs'] = [];
+        }
+        $this->data['additionalJs'][] = $file;
+    }
+}

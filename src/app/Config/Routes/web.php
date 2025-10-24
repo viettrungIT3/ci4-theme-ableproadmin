@@ -7,8 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-// Home route
-$routes->get('/', 'Home::index');
+// Dashboard routes
+$routes->get('/', 'Dashboard::index');
+$routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/dashboard/analytics', 'Dashboard::analytics');
+$routes->get('/dashboard/finance', 'Dashboard::finance');
 
 // User management routes
 $routes->group('users', function ($routes) {
@@ -23,7 +26,16 @@ $routes->group('users', function ($routes) {
     $routes->get('toggle-status/(:num)', 'Users::toggleStatus/$1');
 });
 
-// Admin dashboard routes
-$routes->group('dashboard', function ($routes) {
-    $routes->get('/', 'Dashboard::index');
-});
+// Layout routes
+$routes->get('/layouts/vertical', 'Layouts::vertical');
+$routes->get('/layouts/horizontal', 'Layouts::horizontal');
+$routes->get('/layouts/compact', 'Layouts::compact');
+$routes->get('/layouts/tab', 'Layouts::tab');
+
+// Settings routes
+$routes->get('/settings/general', 'Settings::general');
+$routes->get('/settings/theme', 'Settings::theme');
+$routes->get('/settings/security', 'Settings::security');
+
+// Help route
+$routes->get('/help', 'Help::index');
