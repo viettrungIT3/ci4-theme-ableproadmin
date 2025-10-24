@@ -1,0 +1,8 @@
+# Disable content negotiation for font files
+Options -MultiViews
+
+# Force correct MIME type
+<FilesMatch "\.(woff2?|ttf|eot)$">
+    Header set Content-Type "font/woff2"
+    Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
