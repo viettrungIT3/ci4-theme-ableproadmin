@@ -72,3 +72,7 @@ yarn-error.log*
 # GitHub workflows (if not needed)
 .github/workflows/*
 !.github/workflows/.gitkeep
+
+
+# References
+reference/*
