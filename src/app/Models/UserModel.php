@@ -38,6 +38,26 @@ class UserModel extends Model
         'is_active' => 'permit_empty|in_list[0,1]'
     ];
 
+    // Validation rules for updates (less strict)
+    protected $updateValidationRules = [
+        'username' => 'permit_empty|min_length[3]|max_length[100]|is_unique[users.username,id,{id}]',
+        'email' => 'permit_empty|valid_email|is_unique[users.email,id,{id}]',
+        'password' => 'permit_empty|min_length[6]|max_length[255]',
+        'first_name' => 'permit_empty|min_length[2]|max_length[100]',
+        'last_name' => 'permit_empty|min_length[2]|max_length[100]',
+        'is_active' => 'permit_empty|in_list[0,1]'
+    ];
+
+    // Validation rules for partial updates
+    protected $partialUpdateValidationRules = [
+        'username' => 'permit_empty|min_length[3]|max_length[100]|is_unique[users.username,id,{id}]',
+        'email' => 'permit_empty|valid_email|is_unique[users.email,id,{id}]',
+        'password' => 'permit_empty|min_length[6]|max_length[255]',
+        'first_name' => 'permit_empty|min_length[2]|max_length[100]',
+        'last_name' => 'permit_empty|min_length[2]|max_length[100]',
+        'is_active' => 'permit_empty|in_list[0,1]'
+    ];
+
     protected $validationMessages = [
         'username' => [
             'required' => 'Username is required',
@@ -52,7 +72,19 @@ class UserModel extends Model
         ],
         'password' => [
             'required' => 'Password is required',
-            'min_length' => 'Password must be at least 6 characters'
+            'min_length' => 'Password must be at least 6 characters',
+            'max_length' => 'Password cannot exceed 255 characters'
+        ],
+        'first_name' => [
+            'min_length' => 'First name must be at least 2 characters',
+            'max_length' => 'First name cannot exceed 100 characters'
+        ],
+        'last_name' => [
+            'min_length' => 'Last name must be at least 2 characters',
+            'max_length' => 'Last name cannot exceed 100 characters'
+        ],
+        'is_active' => [
+            'in_list' => 'Status must be either active or inactive'
         ]
     ];
 
@@ -85,5 +117,112 @@ class UserModel extends Model
     public function getActiveUsers()
     {
         return $this->where('is_active', 1)->findAll();
+    }
+
+    /**
+     * Update user with flexible validation
+     */
+    public function updateUser($id, $data)
+    {
+        // Store original validation rules
+        $originalRules = $this->validationRules;
+
+        // Use update validation rules
+        $this->validationRules = $this->updateValidationRules;
+
+        // Replace {id} placeholder in validation rules
+        foreach ($this->validationRules as $field => $rules) {
+            $this->validationRules[$field] = str_replace('{id}', $id, $rules);
+        }
+
+        // Only validate fields that are being updated
+        $fieldsToValidate = array_keys($data);
+        $filteredRules = [];
+        foreach ($fieldsToValidate as $field) {
+            if (isset($this->validationRules[$field])) {
+                $filteredRules[$field] = $this->validationRules[$field];
+            }
+        }
+        $this->validationRules = $filteredRules;
+
+        $result = $this->update($id, $data);
+
+        // Restore original validation rules
+        $this->validationRules = $originalRules;
+
+        return $result;
+    }
+
+    /**
+     * Partial update user with minimal validation
+     */
+    public function partialUpdateUser($id, $data)
+    {
+        // Store original validation rules
+        $originalRules = $this->validationRules;
+
+        // Apply partial update validation rules
+        $this->validationRules = $this->partialUpdateValidationRules;
+
+        // Replace {id} placeholder in validation rules
+        foreach ($this->validationRules as $field => $rules) {
+            $this->validationRules[$field] = str_replace('{id}', $id, $rules);
+        }
+
+        // Only validate fields that are being updated
+        $fieldsToValidate = array_keys($data);
+        $filteredRules = [];
+        foreach ($fieldsToValidate as $field) {
+            if (isset($this->validationRules[$field])) {
+                $filteredRules[$field] = $this->validationRules[$field];
+            }
+        }
+        $this->validationRules = $filteredRules;
+
+        $result = $this->update($id, $data);
+
+        // Restore original validation rules
+        $this->validationRules = $originalRules;
+
+        return $result;
+    }
+
+    /**
+     * Validate single field
+     */
+    public function validateField($field, $value, $id = null)
+    {
+        $rules = $this->partialUpdateValidationRules;
+
+        if (!isset($rules[$field])) {
+            return true;
+        }
+
+        $rule = $rules[$field];
+
+        // Replace {id} placeholder if provided
+        if ($id && strpos($rule, '{id}') !== false) {
+            $rule = str_replace('{id}', $id, $rule);
+        }
+
+        $this->validationRules = [$field => $rule];
+        $this->validationMessages = $this->getFieldValidationMessages($field);
+
+        $result = $this->validate([$field => $value]);
+
+        // Reset validation rules
+        $this->validationRules = [];
+
+        return $result;
+    }
+
+    /**
+     * Get validation messages for specific field
+     */
+    public function getFieldValidationMessages($field)
+    {
+        return isset($this->validationMessages[$field])
+            ? [$field => $this->validationMessages[$field]]
+            : [];
     }
 }

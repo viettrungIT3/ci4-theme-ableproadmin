@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Api;
+namespace App\Controllers\Api\V1;
 
 use App\Controllers\ApiController;
 use App\Models\UserModel;
@@ -43,14 +43,10 @@ class Users extends ApiController
      */
     public function create()
     {
-        $data = [
-            'username' => $this->request->getPost('username'),
-            'email' => $this->request->getPost('email'),
-            'password' => $this->request->getPost('password'),
-            'first_name' => $this->request->getPost('first_name'),
-            'last_name' => $this->request->getPost('last_name'),
-            'is_active' => $this->request->getPost('is_active') ?? 1
-        ];
+        $data = $this->request->getJSON(true) ?? [];
+
+        // Set default values
+        $data['is_active'] = $data['is_active'] ?? 1;
 
         if (!$this->userModel->insert($data)) {
             return $this->validationError($this->userModel->errors());
@@ -71,20 +67,14 @@ class Users extends ApiController
             return $this->error('User not found', 404);
         }
 
-        $data = [
-            'username' => $this->request->getPost('username'),
-            'email' => $this->request->getPost('email'),
-            'first_name' => $this->request->getPost('first_name'),
-            'last_name' => $this->request->getPost('last_name'),
-            'is_active' => $this->request->getPost('is_active')
-        ];
+        $data = $this->request->getJSON(true) ?? [];
 
         // Only update password if provided
-        if ($this->request->getPost('password')) {
-            $data['password'] = $this->request->getPost('password');
+        if (empty($data['password'])) {
+            unset($data['password']);
         }
 
-        if (!$this->userModel->update($id, $data)) {
+        if (!$this->userModel->updateUser($id, $data)) {
             return $this->validationError($this->userModel->errors());
         }
 
@@ -114,5 +104,37 @@ class Users extends ApiController
     {
         $users = $this->userModel->getActiveUsers();
         return $this->success($users, 'Active users retrieved successfully');
+    }
+
+    /**
+     * Check username availability
+     */
+    public function checkUsername()
+    {
+        try {
+            $username = $this->request->getGet('username');
+
+            if (!$username) {
+                return $this->respond([
+                    'status' => 400,
+                    'message' => 'Username is required'
+                ], 400);
+            }
+
+            // Check if username exists
+            $existingUser = $this->userModel->where('username', $username)->first();
+            $available = !$existingUser;
+
+            return $this->respond([
+                'status' => 200,
+                'available' => $available,
+                'message' => $available ? 'Username is available' : 'Username is already taken'
+            ]);
+        } catch (\Exception $e) {
+            return $this->respond([
+                'status' => 500,
+                'message' => 'Error checking username: ' . $e->getMessage()
+            ], 500);
+        }
     }
 }

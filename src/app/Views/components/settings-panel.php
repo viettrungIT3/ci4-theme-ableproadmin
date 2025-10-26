@@ -20,13 +20,12 @@
                 <li class="list-group-item">
                     <div class="pc-dark">
                         <h6 class="mb-1">Theme Mode</h6>
-                        <p class="text-muted text-sm">Choose light or dark mode or Auto</p>
+                        <p class="text-muted text-sm">Choose light or dark mode</p>
                         <div class="row theme-color theme-layout">
                             <div class="col-4">
                                 <div class="d-grid">
-                                    <button class="preset-btn btn <?= $theme['mode'] === 'light' ? 'active' : '' ?>"
-                                        data-value="true" onclick="layout_change('light');" data-bs-toggle="tooltip"
-                                        title="Light">
+                                    <button class="preset-btn btn" data-value="light" onclick="layout_change('light');"
+                                        data-bs-toggle="tooltip" title="Light">
                                         <svg class="pc-icon text-warning">
                                             <use xlink:href="#custom-sun-1"></use>
                                         </svg>
@@ -35,26 +34,24 @@
                             </div>
                             <div class="col-4">
                                 <div class="d-grid">
-                                    <button class="preset-btn btn <?= $theme['mode'] === 'dark' ? 'active' : '' ?>"
-                                        data-value="false" onclick="layout_change('dark');" data-bs-toggle="tooltip"
-                                        title="Dark">
+                                    <button class="preset-btn btn" data-value="dark" onclick="layout_change('dark');"
+                                        data-bs-toggle="tooltip" title="Dark">
                                         <svg class="pc-icon">
                                             <use xlink:href="#custom-moon"></use>
                                         </svg>
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <!-- <div class="col-4">
                                 <div class="d-grid">
-                                    <button class="preset-btn btn <?= $theme['mode'] === 'auto' ? 'active' : '' ?>"
-                                        data-value="default" onclick="layout_change_default();" data-bs-toggle="tooltip"
-                                        title="Automatically sets the theme based on user's operating system's color scheme.">
+                                    <button class="preset-btn btn" data-value="auto" onclick="layout_change_default();"
+                                        data-bs-toggle="tooltip" title="Auto">
                                         <span class="pc-lay-icon d-flex align-items-center justify-content-center">
                                             <i class="ph-duotone ph-cpu"></i>
                                         </span>
                                     </button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </li>
@@ -66,9 +63,9 @@
                     <div class="row theme-contrast">
                         <div class="col-6">
                             <div class="d-grid">
-                                <button class="preset-btn btn <?= $theme['contrast'] ? 'active' : '' ?>"
-                                    data-value="true" onclick="layout_theme_contrast_change('true');"
-                                    data-bs-toggle="tooltip" title="True">
+                                <button class="preset-btn btn" data-value="true"
+                                    onclick="layout_theme_contrast_change('true');" data-bs-toggle="tooltip"
+                                    title="True">
                                     <svg class="pc-icon">
                                         <use xlink:href="#custom-mask"></use>
                                     </svg>
@@ -77,9 +74,9 @@
                         </div>
                         <div class="col-6">
                             <div class="d-grid">
-                                <button class="preset-btn btn <?= !$theme['contrast'] ? 'active' : '' ?>"
-                                    data-value="false" onclick="layout_theme_contrast_change('false');"
-                                    data-bs-toggle="tooltip" title="False">
+                                <button class="preset-btn btn active" data-value="false"
+                                    onclick="layout_theme_contrast_change('false');" data-bs-toggle="tooltip"
+                                    title="False">
                                     <svg class="pc-icon">
                                         <use xlink:href="#custom-mask-1-outline"></use>
                                     </svg>
@@ -94,45 +91,34 @@
                     <h6 class="mb-1">Custom Theme</h6>
                     <p class="text-muted text-sm">Choose your primary theme color</p>
                     <div class="theme-color preset-color">
-                        <a href="#!" data-bs-toggle="tooltip" title="Blue"
-                            class="<?= $theme['color_preset'] === 'preset-1' ? 'active' : '' ?>" data-value="preset-1">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-1" data-value="preset-1">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Indigo"
-                            class="<?= $theme['color_preset'] === 'preset-2' ? 'active' : '' ?>" data-value="preset-2">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-2" data-value="preset-2">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Purple"
-                            class="<?= $theme['color_preset'] === 'preset-3' ? 'active' : '' ?>" data-value="preset-3">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-3" data-value="preset-3">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Pink"
-                            class="<?= $theme['color_preset'] === 'preset-4' ? 'active' : '' ?>" data-value="preset-4">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-4" data-value="preset-4">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Red"
-                            class="<?= $theme['color_preset'] === 'preset-5' ? 'active' : '' ?>" data-value="preset-5">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-5" data-value="preset-5">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Orange"
-                            class="<?= $theme['color_preset'] === 'preset-6' ? 'active' : '' ?>" data-value="preset-6">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-6" data-value="preset-6">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Yellow"
-                            class="<?= $theme['color_preset'] === 'preset-7' ? 'active' : '' ?>" data-value="preset-7">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-7" data-value="preset-7">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Green"
-                            class="<?= $theme['color_preset'] === 'preset-8' ? 'active' : '' ?>" data-value="preset-8">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-8" data-value="preset-8">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Teal"
-                            class="<?= $theme['color_preset'] === 'preset-9' ? 'active' : '' ?>" data-value="preset-9">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-9" data-value="preset-9">
                             <i class="ti ti-checks"></i>
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Cyan"
-                            class="<?= $theme['color_preset'] === 'preset-10' ? 'active' : '' ?>"
-                            data-value="preset-10">
+                        <a href="#" data-bs-toggle="tooltip" title="Preset-10" data-value="preset-10">
                             <i class="ti ti-checks"></i>
                         </a>
                     </div>
@@ -140,33 +126,28 @@
 
                 <!-- Theme Layout -->
                 <li class="list-group-item">
-                    <h6 class="mb-1">Theme Layout</h6>
+                    <h6 class="mb-1">Theme layout</h6>
                     <p class="text-muted text-sm">Choose your layout</p>
                     <div class="theme-main-layout d-flex align-center gap-1 w-100">
-                        <a href="#!" data-bs-toggle="tooltip" title="Vertical"
-                            class="<?= $theme['layout'] === 'vertical' ? 'active' : '' ?>" data-value="vertical">
-                            <img src="<?= $themePath ?>/assets/images/customizer/caption-on.svg" alt="img"
-                                class="img-fluid">
+                        <a href="#" data-bs-toggle="tooltip" title="Vertical" data-value="vertical">
+                            <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/caption-on.svg') ?>"
+                                alt="img" class="img-fluid">
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Horizontal"
-                            class="<?= $theme['layout'] === 'horizontal' ? 'active' : '' ?>" data-value="horizontal">
-                            <img src="<?= $themePath ?>/assets/images/customizer/horizontal.svg" alt="img"
-                                class="img-fluid">
+                        <a href="#" data-bs-toggle="tooltip" title="Horizontal" data-value="horizontal">
+                            <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/horizontal.svg') ?>"
+                                alt="img" class="img-fluid">
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Color Header"
-                            class="<?= $theme['layout'] === 'color-header' ? 'active' : '' ?>"
-                            data-value="color-header">
-                            <img src="<?= $themePath ?>/assets/images/customizer/color-header.svg" alt="img"
-                                class="img-fluid">
+                        <a href="#" data-bs-toggle="tooltip" title="Color Header" data-value="color-header">
+                            <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/color-header.svg') ?>"
+                                alt="img" class="img-fluid">
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Compact"
-                            class="<?= $theme['layout'] === 'compact' ? 'active' : '' ?>" data-value="compact">
-                            <img src="<?= $themePath ?>/assets/images/customizer/compact.svg" alt="img"
-                                class="img-fluid">
+                        <a href="#" data-bs-toggle="tooltip" title="Compact" data-value="compact">
+                            <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/compact.svg') ?>"
+                                alt="img" class="img-fluid">
                         </a>
-                        <a href="#!" data-bs-toggle="tooltip" title="Tab"
-                            class="<?= $theme['layout'] === 'tab' ? 'active' : '' ?>" data-value="tab">
-                            <img src="<?= $themePath ?>/assets/images/customizer/tab.svg" alt="img" class="img-fluid">
+                        <a href="#" data-bs-toggle="tooltip" title="Tab" data-value="tab">
+                            <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/tab.svg') ?>"
+                                alt="img" class="img-fluid">
                         </a>
                     </div>
                 </li>
@@ -178,21 +159,21 @@
                     <div class="row theme-color theme-nav-caption">
                         <div class="col-6">
                             <div class="d-grid">
-                                <button class="preset-btn btn-img btn <?= $theme['sidebar_caption'] ? 'active' : '' ?>"
-                                    data-value="true" onclick="layout_caption_change('true');" data-bs-toggle="tooltip"
+                                <button class="preset-btn btn-img btn" data-value="true"
+                                    onclick="layout_caption_change('true');" data-bs-toggle="tooltip"
                                     title="Caption Show">
-                                    <img src="<?= $themePath ?>/assets/images/customizer/caption-on.svg" alt="img"
-                                        class="img-fluid">
+                                    <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/caption-on.svg') ?>"
+                                        alt="img" class="img-fluid">
                                 </button>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="d-grid">
-                                <button class="preset-btn btn-img btn <?= !$theme['sidebar_caption'] ? 'active' : '' ?>"
-                                    data-value="false" onclick="layout_caption_change('false');"
-                                    data-bs-toggle="tooltip" title="Caption Hide">
-                                    <img src="<?= $themePath ?>/assets/images/customizer/caption-off.svg" alt="img"
-                                        class="img-fluid">
+                                <button class="preset-btn btn-img btn" data-value="false"
+                                    onclick="layout_caption_change('false');" data-bs-toggle="tooltip"
+                                    title="Caption Hide">
+                                    <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/caption-off.svg') ?>"
+                                        alt="img" class="img-fluid">
                                 </button>
                             </div>
                         </div>
@@ -207,23 +188,19 @@
                         <div class="row theme-color theme-direction">
                             <div class="col-6">
                                 <div class="d-grid">
-                                    <button
-                                        class="preset-btn btn-img btn <?= $theme['direction'] === 'ltr' ? 'active' : '' ?>"
-                                        data-value="false" onclick="layout_rtl_change('false');"
-                                        data-bs-toggle="tooltip" title="LTR">
-                                        <img src="<?= $themePath ?>/assets/images/customizer/ltr.svg" alt="img"
-                                            class="img-fluid">
+                                    <button class="preset-btn btn-img btn" data-value="false"
+                                        onclick="layout_rtl_change('false');" data-bs-toggle="tooltip" title="LTR">
+                                        <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/ltr.svg') ?>"
+                                            alt="img" class="img-fluid">
                                     </button>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-grid">
-                                    <button
-                                        class="preset-btn btn-img btn <?= $theme['direction'] === 'rtl' ? 'active' : '' ?>"
-                                        data-value="true" onclick="layout_rtl_change('true');" data-bs-toggle="tooltip"
-                                        title="RTL">
-                                        <img src="<?= $themePath ?>/assets/images/customizer/rtl.svg" alt="img"
-                                            class="img-fluid">
+                                    <button class="preset-btn btn-img btn" data-value="true"
+                                        onclick="layout_rtl_change('true');" data-bs-toggle="tooltip" title="RTL">
+                                        <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/rtl.svg') ?>"
+                                            alt="img" class="img-fluid">
                                     </button>
                                 </div>
                             </div>
@@ -239,23 +216,21 @@
                         <div class="row theme-color theme-container">
                             <div class="col-6">
                                 <div class="d-grid">
-                                    <button
-                                        class="preset-btn btn-img btn <?= $theme['container'] === 'full' ? 'active' : '' ?>"
-                                        data-value="false" onclick="change_box_container('false')"
-                                        data-bs-toggle="tooltip" title="Full Width">
-                                        <img src="<?= $themePath ?>/assets/images/customizer/full.svg" alt="img"
-                                            class="img-fluid">
+                                    <button class="preset-btn btn-img btn" data-value="false"
+                                        onclick="change_box_container('false')" data-bs-toggle="tooltip"
+                                        title="Full Width">
+                                        <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/full.svg') ?>"
+                                            alt="img" class="img-fluid">
                                     </button>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-grid">
-                                    <button
-                                        class="preset-btn btn-img btn <?= $theme['container'] === 'container' ? 'active' : '' ?>"
-                                        data-value="true" onclick="change_box_container('true')"
-                                        data-bs-toggle="tooltip" title="Fixed Width">
-                                        <img src="<?= $themePath ?>/assets/images/customizer/fixed.svg" alt="img"
-                                            class="img-fluid">
+                                    <button class="preset-btn btn-img btn" data-value="true"
+                                        onclick="change_box_container('true')" data-bs-toggle="tooltip"
+                                        title="Fixed Width">
+                                        <img src="<?= base_url('themes/able-pro-admin/assets/images/customizer/fixed.svg') ?>"
+                                            alt="img" class="img-fluid">
                                     </button>
                                 </div>
                             </div>

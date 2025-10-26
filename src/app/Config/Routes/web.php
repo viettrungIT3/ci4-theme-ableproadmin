@@ -7,39 +7,36 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+
 // Home route
-$routes->get('/', 'Dashboard::index');
+$routes->get('/', 'Home::index');
+
+// Test routes
+$routes->get('/test-theme', 'Web\Admin\Test::theme');
+$routes->get('/test-toast', 'Web\Admin\Test::toast');
+$routes->get('/test-toast-simple', 'Web\Admin\Test::toastSimple');
 
 // Dashboard routes
 $routes->group('dashboard', function ($routes) {
-    $routes->get('/', 'Dashboard::index');
-    $routes->get('/analytics', 'Dashboard::analytics');
-    $routes->get('/finance', 'Dashboard::finance');
+    $routes->get('/', 'Web\Admin\Dashboard::index');
+    $routes->get('/analytics', 'Web\Admin\Dashboard::analytics');
+    $routes->get('/finance', 'Web\Admin\Dashboard::finance');
+
+    // User management routes (view only - actions handled via API)
+    $routes->group('users', function ($routes) {
+        $routes->get('/', 'Web\Admin\Users::index');
+        $routes->get('create', 'Web\Admin\Users::create');
+        $routes->get('show/(:num)', 'Web\Admin\Users::show/$1');
+        $routes->get('edit/(:num)', 'Web\Admin\Users::edit/$1');
+        $routes->get('search', 'Web\Admin\Users::search');
+    });
 });
 
-// User management routes
-$routes->group('users', function ($routes) {
-    $routes->get('/', 'Users::index');
-    $routes->get('create', 'Users::create');
-    $routes->post('store', 'Users::store');
-    $routes->get('show/(:num)', 'Users::show/$1');
-    $routes->get('edit/(:num)', 'Users::edit/$1');
-    $routes->post('update/(:num)', 'Users::update/$1');
-    $routes->get('delete/(:num)', 'Users::delete/$1');
-    $routes->get('search', 'Users::search');
-    $routes->get('toggle-status/(:num)', 'Users::toggleStatus/$1');
+// Auth routes
+$routes->group('auth', function ($routes) {
+    $routes->get('login', 'Web\Auth\Login::index');
+    $routes->post('login', 'Web\Auth\Login::process');
+    $routes->get('register', 'Web\Auth\Register::index');
+    $routes->post('register', 'Web\Auth\Register::process');
+    $routes->get('logout', 'Web\Auth\Login::logout');
 });
-
-// Layout routes
-$routes->get('/layouts/vertical', 'Layouts::vertical');
-$routes->get('/layouts/horizontal', 'Layouts::horizontal');
-$routes->get('/layouts/compact', 'Layouts::compact');
-$routes->get('/layouts/tab', 'Layouts::tab');
-
-// Settings routes
-$routes->get('/settings/general', 'Settings::general');
-$routes->get('/settings/theme', 'Settings::theme');
-$routes->get('/settings/security', 'Settings::security');
-
-// Help route
-$routes->get('/help', 'Help::index');

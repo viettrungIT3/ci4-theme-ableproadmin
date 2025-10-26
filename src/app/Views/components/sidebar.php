@@ -2,7 +2,7 @@
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
         <div class="m-header">
-            <a href="<?= base_url() ?>" class="b-brand text-primary">
+            <a href="<?= base_url('dashboard') ?>" class="b-brand text-primary">
                 <img src="<?= base_url('assets/images/icon-admin.svg') ?>" class="img-fluid logo-lg" alt="logo">
 
                 <span class="badge bg-light-success rounded-pill ms-2 theme-version">v1.0.0</span>
@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="flex-shrink-0">
-                            <img src="<?= $themePath ?>/assets/images/user/avatar-1.jpg" alt="user-image"
+                            <img src="/assets/images/user/avatar-1.jpg" alt="user-image"
                                 class="user-avtar wid-45 rounded-circle">
                         </div>
                         <div class="flex-grow-1 ms-3 me-2">
@@ -68,7 +68,7 @@
                     </a>
                     <ul class="pc-submenu">
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url() ?>">Default</a>
+                            <a class="pc-link" href="<?= base_url('dashboard') ?>">Default</a>
                         </li>
                         <li class="pc-item">
                             <a class="pc-link" href="<?= base_url('dashboard/analytics') ?>">Analytics</a>
@@ -92,16 +92,16 @@
                     </a>
                     <ul class="pc-submenu">
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('layouts/vertical') ?>">Vertical</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/layouts/vertical') ?>">Vertical</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('layouts/horizontal') ?>">Horizontal</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/layouts/horizontal') ?>">Horizontal</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('layouts/compact') ?>">Compact</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/layouts/compact') ?>">Compact</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('layouts/tab') ?>">Tab</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/layouts/tab') ?>">Tab</a>
                         </li>
                     </ul>
                 </li>
@@ -125,13 +125,13 @@
                     </a>
                     <ul class="pc-submenu">
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('users') ?>">List Users</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/users') ?>">List Users</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('users/create') ?>">Add User</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/users/create') ?>">Add User</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('users/roles') ?>">User Roles</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/users/roles') ?>">User Roles</a>
                         </li>
                     </ul>
                 </li>
@@ -149,13 +149,13 @@
                     </a>
                     <ul class="pc-submenu">
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('settings/general') ?>">General</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/settings/general') ?>">General</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('settings/theme') ?>">Theme</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/settings/theme') ?>">Theme</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="<?= base_url('settings/security') ?>">Security</a>
+                            <a class="pc-link" href="<?= base_url('dashboard/settings/security') ?>">Security</a>
                         </li>
                     </ul>
                 </li>
@@ -166,7 +166,7 @@
                     </svg>
                 </li>
                 <li class="pc-item">
-                    <a href="<?= base_url('help') ?>" class="pc-link">
+                    <a href="<?= base_url('dashboard/help') ?>" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-24-support"></use>

@@ -1,0 +1,69 @@
+/* Username Validation Styles */
+.username-validation {
+    margin-top: 0.25rem;
+}
+
+.validation-indicator {
+    width: 100%;
+}
+
+.validation-status {
+    font-size: 0.875rem;
+    line-height: 1.2;
+}
+
+.validation-icon {
+    font-size: 0.875rem;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.validation-icon.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.validation-text {
+    font-weight: 500;
+}
+
+/* Status colors */
+.validation-status.text-success {
+    color: #28a745 !important;
+}
+
+.validation-status.text-danger {
+    color: #dc3545 !important;
+}
+
+.validation-status.text-warning {
+    color: #ffc107 !important;
+}
+
+.validation-status.text-info {
+    color: #17a2b8 !important;
+}
+
+.validation-status.text-muted {
+    color: #6c757d !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .validation-status {
+        font-size: 0.8rem;
+    }
+    
+    .validation-icon {
+        font-size: 0.8rem;
+        width: 14px;
+        height: 14px;
+    }
+}

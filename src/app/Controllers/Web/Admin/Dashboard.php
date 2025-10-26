@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Web\Admin;
 
 use App\Controllers\BaseThemeController;
 
@@ -10,7 +10,7 @@ class Dashboard extends BaseThemeController
     {
         $this->setPageTitle('Dashboard');
         $this->setBreadcrumb([
-            ['title' => 'Dashboard', 'url' => base_url()]
+            ['title' => 'Dashboard', 'url' => base_url('dashboard')]
         ]);
 
         $data = [

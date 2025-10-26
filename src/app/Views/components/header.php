@@ -40,24 +40,24 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                        <a href="#" class="dropdown-item" onclick="layout_change('dark')">
-                            <svg class="pc-icon">
-                                <use xlink:href="#custom-moon"></use>
-                            </svg>
-                            <span>Dark</span>
-                        </a>
                         <a href="#" class="dropdown-item" onclick="layout_change('light')">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-sun-1"></use>
                             </svg>
                             <span>Light</span>
                         </a>
-                        <a href="#" class="dropdown-item" onclick="layout_change_default()">
+                        <a href="#" class="dropdown-item" onclick="layout_change('dark')">
+                            <svg class="pc-icon">
+                                <use xlink:href="#custom-moon"></use>
+                            </svg>
+                            <span>Dark</span>
+                        </a>
+                        <!-- <a href="#" class="dropdown-item" onclick="layout_change_default()">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-setting-2"></use>
                             </svg>
                             <span>Default</span>
-                        </a>
+                        </a> -->
                     </div>
                 </li>
 
@@ -91,16 +91,6 @@
                             <span>Logout</span>
                         </a>
                     </div>
-                </li>
-
-                <!-- Announcements -->
-                <li class="pc-h-item">
-                    <a href="#" class="pc-head-link me-0" data-bs-toggle="offcanvas" data-bs-target="#announcement"
-                        aria-controls="announcement">
-                        <svg class="pc-icon">
-                            <use xlink:href="#custom-flash"></use>
-                        </svg>
-                    </a>
                 </li>
 
                 <!-- Notifications -->
@@ -149,8 +139,7 @@
                 <li class="dropdown pc-h-item header-user-profile">
                     <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#"
                         role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
-                        <img src="<?= $themePath ?>/assets/images/user/avatar-2.jpg" alt="user-image"
-                            class="user-avtar">
+                        <img src="/assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
                     </a>
                     <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
                         <div class="dropdown-header d-flex align-items-center justify-content-between">
@@ -161,7 +150,7 @@
                                 style="max-height: calc(100vh - 225px)">
                                 <div class="d-flex mb-1">
                                     <div class="flex-shrink-0">
-                                        <img src="<?= $themePath ?>/assets/images/user/avatar-2.jpg" alt="user-image"
+                                        <img src="/assets/images/user/avatar-2.jpg" alt="user-image"
                                             class="user-avtar wid-35">
                                     </div>
                                     <div class="flex-grow-1 ms-3">

@@ -4,7 +4,8 @@ use App\Helpers\ElementHelper;
 // Breadcrumb
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
-    ['title' => 'Users', 'url' => base_url('users'), 'active' => true]
+    ['title' => 'Users', 'url' => base_url('users')],
+    ['title' => 'Search', 'url' => base_url('users/search'), 'active' => true]
 ]);
 
 // Success/Error alerts
@@ -16,22 +17,37 @@ if (session()->getFlashdata('error')) {
 }
 ?>
 
-<!-- [ Users List ] start -->
+<!-- [ Search Users ] start -->
 <div class="col-sm-12">
     <?= ElementHelper::card(
         // Search Form
-        '<div class="row mb-3">
-            <div class="col-md-6">
+        '<div class="row mb-4">
+            <div class="col-md-8">
                 <form method="GET" action="' . base_url('users/search') . '">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="q" placeholder="Search users..." value="' . esc($search ?? '') . '">
-                        <button class="btn btn-outline-secondary" type="submit">
-                            <i class="ti ti-search"></i>
-                        </button>
+                        <input type="text" class="form-control" name="q" placeholder="Search users by username, email, first name, or last name..." value="' . esc($search ?? '') . '">
+                        ' . ElementHelper::button('Search', [
+                    'type' => 'primary',
+                    'icon' => 'ti ti-search',
+                    'options' => ['type' => 'submit']
+                ]) . '
                     </div>
                 </form>
             </div>
+            <div class="col-md-4 text-end">
+                ' . (!empty($search) ?
+            ElementHelper::button('Clear Search', [
+                'type' => 'secondary',
+                'variant' => 'outline',
+                'icon' => 'ti ti-x',
+                'href' => base_url('users')
+            ]) : ''
+        ) . '
+            </div>
         </div>' .
+
+        // Search Results (will be shown via Toast)
+        '' .
 
         // Users Table
         '<div class="table-responsive">
@@ -89,20 +105,23 @@ if (session()->getFlashdata('error')) {
                                 </td>
                             </tr>';
                 }, $users)) :
-            '<tr><td colspan="8" class="text-center">No users found</td></tr>'
+            '<tr><td colspan="8" class="text-center">' . (!empty($search) ? 'No users found matching your search criteria' : 'No users found') . '</td></tr>'
         ) .
         '</tbody>
             </table>
         </div>',
         [
-            'title' => 'Users Management',
-            'footer' => ElementHelper::primaryButton('Add New User', base_url('users/create'), [
-                'icon' => 'ti ti-plus'
+            'title' => 'Search Users',
+            'footer' => ElementHelper::button('Back to Users', [
+                'type' => 'secondary',
+                'variant' => 'outline',
+                'icon' => 'ti ti-arrow-left',
+                'href' => base_url('users')
             ])
         ]
     ) ?>
 </div>
-<!-- [ Users List ] end -->
+<!-- [ Search Users ] end -->
 
 <script>
     async function toggleUserStatus(userId, newStatus) {
@@ -198,5 +217,25 @@ if (session()->getFlashdata('error')) {
             tbody.innerHTML = '<tr><td colspan="8" class="text-center">No users found</td></tr>';
         }
     }
+
+    // Show search results toast if there's a search term
+    <?php if (!empty($search)): ?>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchTerm = '<?= esc($search) ?>';
+            const userCount = <?= count($users) ?>;
+
+            if (searchTerm && userCount > 0) {
+                Toast.info(`Search results for: <strong>${searchTerm}</strong> (${userCount} users found)`, {
+                    duration: 4000,
+                    position: 'top-center'
+                });
+            } else if (searchTerm && userCount === 0) {
+                Toast.warning(`No users found for: <strong>${searchTerm}</strong>`, {
+                    duration: 4000,
+                    position: 'top-center'
+                });
+            }
+        });
+    <?php endif; ?>
 
 </script>

@@ -5,7 +5,7 @@ use App\Helpers\ElementHelper;
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
     ['title' => 'Users', 'url' => base_url('users')],
-    ['title' => 'Create', 'url' => base_url('users/create'), 'active' => true]
+    ['title' => 'Edit', 'url' => base_url('users/edit/' . $user['id']), 'active' => true]
 ]);
 
 // Success/Error alerts
@@ -17,26 +17,29 @@ if (session()->getFlashdata('error')) {
 }
 ?>
 
-<!-- [ Create User ] start -->
+<!-- [ Edit User ] start -->
 <div class="col-sm-12">
     <?= ElementHelper::card(
-        '<form id="createUserForm">
+        '<form id="editUserForm">
             <div class="row">
                 <div class="col-md-6">
                     ' . ElementHelper::input('username', [
                     'label' => 'Username',
+                    'value' => $user['username'],
                     'placeholder' => 'Enter username',
-                    'required' => true,
-                    'help_text' => 'Choose a unique username'
+                    'required' => false,
+                    'help_text' => 'Leave unchanged or enter new username'
                 ]) . '
                 </div>
                 <div class="col-md-6">
                     ' . ElementHelper::input('email', [
                     'label' => 'Email',
                     'type' => 'email',
-                    'placeholder' => 'Enter email address',
-                    'required' => true,
-                    'help_text' => 'Enter a valid email address'
+                    'value' => $user['email'],
+                    'placeholder' => 'Email address',
+                    'required' => false,
+                    'readonly' => true,
+                    'help_text' => 'Email cannot be changed'
                 ]) . '
                 </div>
             </div>
@@ -44,18 +47,20 @@ if (session()->getFlashdata('error')) {
             <div class="row">
                 <div class="col-md-6">
                     ' . ElementHelper::input('first_name', [
-                    'type' => 'text',
                     'label' => 'First Name',
+                    'value' => $user['first_name'],
                     'placeholder' => 'Enter first name',
-                    'required' => true
+                    'required' => false,
+                    'help_text' => 'Enter new first name'
                 ]) . '
                 </div>
                 <div class="col-md-6">
                     ' . ElementHelper::input('last_name', [
-                    'type' => 'text',
                     'label' => 'Last Name',
+                    'value' => $user['last_name'],
                     'placeholder' => 'Enter last name',
-                    'required' => true
+                    'required' => false,
+                    'help_text' => 'Enter new last name'
                 ]) . '
                 </div>
             </div>
@@ -65,9 +70,8 @@ if (session()->getFlashdata('error')) {
                     ' . ElementHelper::input('password', [
                     'label' => 'Password',
                     'type' => 'password',
-                    'placeholder' => 'Enter password',
-                    'required' => true,
-                    'help_text' => 'Minimum 6 characters'
+                    'placeholder' => 'Enter new password (leave blank to keep current)',
+                    'help_text' => 'Leave blank to keep current password'
                 ]) . '
                 </div>
                 <div class="col-md-6">
@@ -77,53 +81,56 @@ if (session()->getFlashdata('error')) {
                         '1' => 'Active',
                         '0' => 'Inactive'
                     ],
-                    'value' => '1',
+                    'value' => $user['is_active'],
                     'help_text' => 'User account status'
                 ]) . '
                 </div>
             </div>
 
             <div class="d-flex gap-2">
-                ' . ElementHelper::successButton('Create User', null, [
-                    'attributes' => ['type' => 'submit', 'id' => 'createUserBtn', 'disabled' => true],
-                    'icon' => 'ti ti-check'
+                ' . ElementHelper::successButton('Update User', null, [
+                    'type' => 'submit',
+                    'icon' => 'ti ti-check',
+                    'attributes' => [
+                        'id' => 'editUserBtn',
+                        'disabled' => true
+                    ]
                 ]) . '
                 ' . ElementHelper::button('Cancel', [
                     'type' => 'secondary',
                     'variant' => 'outline',
-                    'href' => base_url('users'),
-                    'attributes' => ['id' => 'cancelCreateBtn']
+                    'href' => base_url('users/show/' . $user['id']),
+                    'attributes' => [
+                        'id' => 'cancelBtn'
+                    ]
                 ]) . '
             </div>
         </form>',
         [
-            'title' => 'Create New User'
+            'title' => 'Edit User'
         ]
     ) ?>
 </div>
-<!-- [ Create User ] end -->
+<!-- [ Edit User ] end -->
 
 <script>
-    console.log('Script loaded');
-
-    // Store original form data (empty for create)
+    // Store original form data
     let originalData = {};
 
     document.addEventListener('DOMContentLoaded', function () {
-        // Store original values (empty for create)
+        // Store original values
         originalData = {
-            username: '',
-            email: '',
-            first_name: '',
-            last_name: '',
+            username: document.getElementById('username').value,
+            first_name: document.getElementById('first_name').value,
+            last_name: document.getElementById('last_name').value,
             password: '',
-            is_active: '1'
+            is_active: document.getElementById('is_active').value
         };
 
         // Add change listeners to enable/disable button
-        const form = document.getElementById('createUserForm');
+        const form = document.getElementById('editUserForm');
         const inputs = form.querySelectorAll('input, select');
-        const submitBtn = document.getElementById('createUserBtn');
+        const submitBtn = document.getElementById('editUserBtn');
 
         // Check if button exists
         if (!submitBtn) {
@@ -139,28 +146,28 @@ if (session()->getFlashdata('error')) {
         function checkForChanges() {
             const currentData = {
                 username: document.getElementById('username').value,
-                email: document.getElementById('email').value,
                 first_name: document.getElementById('first_name').value,
                 last_name: document.getElementById('last_name').value,
                 password: document.getElementById('password').value,
                 is_active: document.getElementById('is_active').value
             };
 
-            // Check if all required fields are filled
-            const hasRequiredData = currentData.username &&
-                currentData.email &&
-                currentData.first_name &&
-                currentData.last_name &&
-                currentData.password;
+            // Check if any field has changed
+            const hasChanges = Object.keys(currentData).some(key => {
+                if (key === 'password') {
+                    return currentData[key] !== ''; // Password changed if not empty
+                }
+                return currentData[key] !== originalData[key];
+            });
 
             // Enable/disable submit button
             if (submitBtn) {
-                submitBtn.disabled = !hasRequiredData;
+                submitBtn.disabled = !hasChanges;
 
-                if (hasRequiredData) {
-                    submitBtn.innerHTML = '<i class="ti ti-check"></i> Create User';
+                if (hasChanges) {
+                    submitBtn.innerHTML = '<i class="ti ti-check"></i> Update User';
                 } else {
-                    submitBtn.innerHTML = '<i class="ti ti-check"></i> Fill Required Fields';
+                    submitBtn.innerHTML = '<i class="ti ti-check"></i> No Changes';
                 }
             }
         }
@@ -169,7 +176,7 @@ if (session()->getFlashdata('error')) {
         checkForChanges();
     });
 
-    document.getElementById('createUserForm').addEventListener('submit', async function (e) {
+    document.getElementById('editUserForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const formData = new FormData(this);
@@ -178,42 +185,82 @@ if (session()->getFlashdata('error')) {
         // Convert is_active to boolean
         data.is_active = data.is_active === '1' ? 1 : 0;
 
-        const btn = document.getElementById('createUserBtn');
+        // Remove empty password
+        if (!data.password) {
+            delete data.password;
+        }
+
+        // Remove email (cannot be changed)
+        delete data.email;
+
+        // Only send changed fields
+        const changedData = {};
+        Object.keys(data).forEach(key => {
+            if (key === 'password') {
+                if (data[key] !== '') {
+                    changedData[key] = data[key];
+                }
+            } else if (data[key] !== originalData[key]) {
+                changedData[key] = data[key];
+            }
+        });
+
+        // If no changes, show message
+        if (Object.keys(changedData).length === 0) {
+            if (typeof Toast !== 'undefined') {
+                Toast.info('No changes detected');
+            } else {
+                alert('INFO: No changes detected');
+            }
+            return;
+        }
+
+        const btn = document.getElementById('editUserBtn');
         const originalText = btn.innerHTML;
 
         try {
-            btn.innerHTML = '<i class="ti ti-loader-2"></i> Creating...';
+            btn.innerHTML = '<i class="ti ti-loader-2"></i> Updating...';
             btn.disabled = true;
 
-            const response = await fetch('<?= base_url('api/v1/users') ?>', {
-                method: 'POST',
+            const response = await fetch('<?= base_url('api/v1/users/' . $user['id']) ?>', {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(changedData)
             });
 
             const result = await response.json();
 
             if (response.ok) {
+                // Show success message
                 if (typeof Toast !== 'undefined') {
-                    Toast.success('User created successfully!');
+                    Toast.success('User updated successfully!');
                 } else {
-                    alert('SUCCESS: User created successfully!');
+                    alert('SUCCESS: User updated successfully!');
                 }
-                // Clear form
-                document.getElementById('createUserForm').reset();
 
-                // Reset button state
+                // Update original data with new values
+                Object.keys(changedData).forEach(key => {
+                    if (key === 'password') {
+                        originalData[key] = ''; // Reset password field
+                        document.getElementById('password').value = '';
+                    } else {
+                        originalData[key] = changedData[key];
+                    }
+                });
+
+                // Re-check for changes
                 setTimeout(() => {
-                    const inputs = document.querySelectorAll('#createUserForm input, #createUserForm select');
+                    const inputs = document.querySelectorAll('#editUserForm input, #editUserForm select');
                     inputs.forEach(input => {
                         input.dispatchEvent(new Event('input'));
                     });
                 }, 100);
 
             } else {
+                // Show error messages
                 if (result.errors) {
                     const errorMsg = Object.values(result.errors).join('<br>');
                     if (typeof Toast !== 'undefined') {
@@ -222,7 +269,7 @@ if (session()->getFlashdata('error')) {
                         alert('ERROR: ' + errorMsg);
                     }
                 } else {
-                    const errorMsg = result.message || 'Error creating user';
+                    const errorMsg = result.message || 'Error updating user';
                     if (typeof Toast !== 'undefined') {
                         Toast.error(errorMsg);
                     } else {

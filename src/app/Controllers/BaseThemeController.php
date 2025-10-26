@@ -16,11 +16,11 @@ abstract class BaseThemeController extends BaseController
     {
         parent::initController($request, $response, $logger);
         $this->themeService = new ThemeService();
-        
+
         // Set common data for all views
-        $this->data['theme'] = $this->themeService->getThemeConfig();
         $this->data['themePath'] = $this->themeService->getThemePath();
-        $this->data['bodyClasses'] = $this->themeService->getBodyClasses();
+        $this->data['pageTitle'] = 'Dashboard';
+        $this->data['breadcrumb'] = [];
     }
 
     /**
