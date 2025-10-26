@@ -1,6 +1,6 @@
 <?php
 /**
- * Header/Topbar Component
+ * Header/Topbar Component.
  *
  * Responsive header with search, notifications, theme toggle, and user profile
  *

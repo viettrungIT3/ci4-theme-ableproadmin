@@ -1,6 +1,6 @@
 <?php
 /**
- * Sidebar Navigation Component
+ * Sidebar Navigation Component.
  *
  * Responsive sidebar navigation with user profile and menu items
  *

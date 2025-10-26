@@ -1,6 +1,6 @@
 <?php
 /**
- * Footer Component
+ * Footer Component.
  *
  * Responsive footer with links and copyright information
  *
@@ -13,7 +13,7 @@ $copyrightText = $copyrightText ?? 'Able Pro ❤️ crafted by Team Phoenixcoded
 $footerLinks = $footerLinks ?? [
     ['title' => 'Home', 'url' => base_url()],
     ['title' => 'Documentation', 'url' => 'https://phoenixcoded.gitbook.io/able-pro/', 'target' => '_blank'],
-    ['title' => 'Support', 'url' => 'https://phoenixcoded.authordesk.app/', 'target' => '_blank']
+    ['title' => 'Support', 'url' => 'https://phoenixcoded.authordesk.app/', 'target' => '_blank'],
 ];
 ?>
 <!-- [ Footer ] start -->
