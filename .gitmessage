@@ -1,0 +1,14 @@
+# <type>(<scope>): <description>
+#
+# <body>
+#
+# <footer>
+#
+# Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build
+# Scopes: component, layout, theme, api, validation, responsive, accessibility, performance
+#
+# Examples:
+# feat(component): add responsive card component
+# fix(validation): resolve form validation error
+# docs(component): update card component documentation
+# refactor(theme): optimize CSS structure
