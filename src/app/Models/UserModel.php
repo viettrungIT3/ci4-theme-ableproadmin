@@ -18,7 +18,7 @@ class UserModel extends Model
         'password',
         'first_name',
         'last_name',
-        'is_active'
+        'is_active',
     ];
 
     // Dates
@@ -35,7 +35,7 @@ class UserModel extends Model
         'password' => 'required|min_length[6]',
         'first_name' => 'permit_empty|max_length[100]',
         'last_name' => 'permit_empty|max_length[100]',
-        'is_active' => 'permit_empty|in_list[0,1]'
+        'is_active' => 'permit_empty|in_list[0,1]',
     ];
 
     // Validation rules for updates (less strict)
@@ -45,7 +45,7 @@ class UserModel extends Model
         'password' => 'permit_empty|min_length[6]|max_length[255]',
         'first_name' => 'permit_empty|min_length[2]|max_length[100]',
         'last_name' => 'permit_empty|min_length[2]|max_length[100]',
-        'is_active' => 'permit_empty|in_list[0,1]'
+        'is_active' => 'permit_empty|in_list[0,1]',
     ];
 
     // Validation rules for partial updates
@@ -55,7 +55,7 @@ class UserModel extends Model
         'password' => 'permit_empty|min_length[6]|max_length[255]',
         'first_name' => 'permit_empty|min_length[2]|max_length[100]',
         'last_name' => 'permit_empty|min_length[2]|max_length[100]',
-        'is_active' => 'permit_empty|in_list[0,1]'
+        'is_active' => 'permit_empty|in_list[0,1]',
     ];
 
     protected $validationMessages = [
@@ -63,29 +63,29 @@ class UserModel extends Model
             'required' => 'Username is required',
             'min_length' => 'Username must be at least 3 characters',
             'max_length' => 'Username cannot exceed 100 characters',
-            'is_unique' => 'Username already exists'
+            'is_unique' => 'Username already exists',
         ],
         'email' => [
             'required' => 'Email is required',
             'valid_email' => 'Please enter a valid email address',
-            'is_unique' => 'Email already exists'
+            'is_unique' => 'Email already exists',
         ],
         'password' => [
             'required' => 'Password is required',
             'min_length' => 'Password must be at least 6 characters',
-            'max_length' => 'Password cannot exceed 255 characters'
+            'max_length' => 'Password cannot exceed 255 characters',
         ],
         'first_name' => [
             'min_length' => 'First name must be at least 2 characters',
-            'max_length' => 'First name cannot exceed 100 characters'
+            'max_length' => 'First name cannot exceed 100 characters',
         ],
         'last_name' => [
             'min_length' => 'Last name must be at least 2 characters',
-            'max_length' => 'Last name cannot exceed 100 characters'
+            'max_length' => 'Last name cannot exceed 100 characters',
         ],
         'is_active' => [
-            'in_list' => 'Status must be either active or inactive'
-        ]
+            'in_list' => 'Status must be either active or inactive',
+        ],
     ];
 
     protected $skipValidation = false;
@@ -101,6 +101,7 @@ class UserModel extends Model
         if (isset($data['data']['password'])) {
             $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
         }
+
         return $data;
     }
 
@@ -120,7 +121,7 @@ class UserModel extends Model
     }
 
     /**
-     * Update user with flexible validation
+     * Update user with flexible validation.
      */
     public function updateUser($id, $data)
     {
@@ -154,7 +155,7 @@ class UserModel extends Model
     }
 
     /**
-     * Partial update user with minimal validation
+     * Partial update user with minimal validation.
      */
     public function partialUpdateUser($id, $data)
     {
@@ -188,7 +189,7 @@ class UserModel extends Model
     }
 
     /**
-     * Validate single field
+     * Validate single field.
      */
     public function validateField($field, $value, $id = null)
     {
@@ -217,7 +218,7 @@ class UserModel extends Model
     }
 
     /**
-     * Get validation messages for specific field
+     * Get validation messages for specific field.
      */
     public function getFieldValidationMessages($field)
     {

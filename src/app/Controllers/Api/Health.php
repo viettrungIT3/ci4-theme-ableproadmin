@@ -7,7 +7,7 @@ use App\Controllers\ApiController;
 class Health extends ApiController
 {
     /**
-     * Health check endpoint
+     * Health check endpoint.
      */
     public function index()
     {
@@ -19,21 +19,22 @@ class Health extends ApiController
             'database' => $this->checkDatabase(),
             'services' => [
                 'web' => 'running',
-                'database' => $this->checkDatabase() ? 'connected' : 'disconnected'
-            ]
+                'database' => $this->checkDatabase() ? 'connected' : 'disconnected',
+            ],
         ];
 
         return $this->success($data, 'System is healthy');
     }
 
     /**
-     * Check database connection
+     * Check database connection.
      */
     private function checkDatabase(): bool
     {
         try {
             $db = \Config\Database::connect();
             $db->query('SELECT 1');
+
             return true;
         } catch (\Exception $e) {
             return false;

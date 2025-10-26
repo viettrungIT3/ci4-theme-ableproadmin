@@ -1,7 +1,7 @@
 <?php
 /**
- * Badge Element
- * 
+ * Badge Element.
+ *
  * Usage:
  * echo view('elements/badge', [
  *     'text' => 'New',
@@ -11,7 +11,6 @@
  *     'class' => 'me-2' // additional CSS classes
  * ]);
  */
-
 $type = $type ?? 'primary';
 $size = $size ?? 'md';
 $pill = $pill ?? false;

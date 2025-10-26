@@ -9,7 +9,7 @@ class Pager extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Templates
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Pagination links are rendered out using views to configure their
      * appearance. This array contains aliases and the view names to
@@ -21,15 +21,15 @@ class Pager extends BaseConfig
      * @var array<string, string>
      */
     public array $templates = [
-        'default_full'   => 'CodeIgniter\Pager\Views\default_full',
+        'default_full' => 'CodeIgniter\Pager\Views\default_full',
         'default_simple' => 'CodeIgniter\Pager\Views\default_simple',
-        'default_head'   => 'CodeIgniter\Pager\Views\default_head',
+        'default_head' => 'CodeIgniter\Pager\Views\default_head',
     ];
 
     /**
      * --------------------------------------------------------------------------
      * Items Per Page
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The default number of results shown in a single page.
      */

@@ -5,7 +5,7 @@ use App\Helpers\ElementHelper;
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
     ['title' => 'Users', 'url' => base_url('users')],
-    ['title' => 'Create', 'url' => base_url('users/create'), 'active' => true]
+    ['title' => 'Create', 'url' => base_url('users/create'), 'active' => true],
 ]);
 
 // Success/Error alerts
@@ -27,7 +27,7 @@ if (session()->getFlashdata('error')) {
                     'label' => 'Username',
                     'placeholder' => 'Enter username',
                     'required' => true,
-                    'help_text' => 'Choose a unique username'
+                    'help_text' => 'Choose a unique username',
                 ]) . '
                 </div>
                 <div class="col-md-6">
@@ -36,7 +36,7 @@ if (session()->getFlashdata('error')) {
                     'type' => 'email',
                     'placeholder' => 'Enter email address',
                     'required' => true,
-                    'help_text' => 'Enter a valid email address'
+                    'help_text' => 'Enter a valid email address',
                 ]) . '
                 </div>
             </div>
@@ -47,7 +47,7 @@ if (session()->getFlashdata('error')) {
                     'type' => 'text',
                     'label' => 'First Name',
                     'placeholder' => 'Enter first name',
-                    'required' => true
+                    'required' => true,
                 ]) . '
                 </div>
                 <div class="col-md-6">
@@ -55,7 +55,7 @@ if (session()->getFlashdata('error')) {
                     'type' => 'text',
                     'label' => 'Last Name',
                     'placeholder' => 'Enter last name',
-                    'required' => true
+                    'required' => true,
                 ]) . '
                 </div>
             </div>
@@ -67,7 +67,7 @@ if (session()->getFlashdata('error')) {
                     'type' => 'password',
                     'placeholder' => 'Enter password',
                     'required' => true,
-                    'help_text' => 'Minimum 6 characters'
+                    'help_text' => 'Minimum 6 characters',
                 ]) . '
                 </div>
                 <div class="col-md-6">
@@ -75,10 +75,10 @@ if (session()->getFlashdata('error')) {
                     'label' => 'Status',
                     'options' => [
                         '1' => 'Active',
-                        '0' => 'Inactive'
+                        '0' => 'Inactive',
                     ],
                     'value' => '1',
-                    'help_text' => 'User account status'
+                    'help_text' => 'User account status',
                 ]) . '
                 </div>
             </div>
@@ -86,25 +86,25 @@ if (session()->getFlashdata('error')) {
             <div class="d-flex gap-2">
                 ' . ElementHelper::successButton('Create User', null, [
                     'attributes' => ['type' => 'submit', 'id' => 'createUserBtn', 'disabled' => true],
-                    'icon' => 'ti ti-check'
+                    'icon' => 'ti ti-check',
                 ]) . '
                 ' . ElementHelper::button('Cancel', [
                     'type' => 'secondary',
                     'variant' => 'outline',
                     'href' => base_url('users'),
-                    'attributes' => ['id' => 'cancelCreateBtn']
+                    'attributes' => ['id' => 'cancelCreateBtn'],
                 ]) . '
             </div>
         </form>',
         [
-            'title' => 'Create New User'
+            'title' => 'Create New User',
         ]
     ) ?>
 </div>
 <!-- [ Create User ] end -->
 
 <script>
-    console.log('Script loaded');
+    // Script loaded
 
     // Store original form data (empty for create)
     let originalData = {};

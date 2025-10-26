@@ -4,9 +4,6 @@ namespace App\Controllers\Web\Admin;
 
 use App\Controllers\BaseThemeController;
 use App\Models\UserModel;
-use CodeIgniter\HTTP\RequestInterface;
-use CodeIgniter\HTTP\ResponseInterface;
-use Psr\Log\LoggerInterface;
 
 class Users extends BaseThemeController
 {
@@ -19,27 +16,27 @@ class Users extends BaseThemeController
     }
 
     /**
-     * Display a listing of users
+     * Display a listing of users.
      */
     public function index()
     {
         $this->setPageTitle('Users Management');
         $this->setBreadcrumb([
             ['title' => 'Dashboard', 'url' => base_url()],
-            ['title' => 'Users', 'url' => base_url('users')]
+            ['title' => 'Users', 'url' => base_url('users')],
         ]);
 
         $users = $this->userModel->findAll();
 
         $data = [
-            'users' => $users
+            'users' => $users,
         ];
 
         return $this->renderAdminView('pages/users/index', $data);
     }
 
     /**
-     * Show the form for creating a new user
+     * Show the form for creating a new user.
      */
     public function create()
     {
@@ -47,15 +44,14 @@ class Users extends BaseThemeController
         $this->setBreadcrumb([
             ['title' => 'Dashboard', 'url' => base_url()],
             ['title' => 'Users', 'url' => base_url('users')],
-            ['title' => 'Create', 'url' => base_url('users/create')]
+            ['title' => 'Create', 'url' => base_url('users/create')],
         ]);
 
         return $this->renderAdminView('pages/users/create');
     }
 
-
     /**
-     * Display the specified user
+     * Display the specified user.
      */
     public function show($id = null)
     {
@@ -69,18 +65,18 @@ class Users extends BaseThemeController
         $this->setBreadcrumb([
             ['title' => 'Dashboard', 'url' => base_url()],
             ['title' => 'Users', 'url' => base_url('users')],
-            ['title' => 'Details', 'url' => base_url('users/show/' . $id)]
+            ['title' => 'Details', 'url' => base_url('users/show/' . $id)],
         ]);
 
         $data = [
-            'user' => $user
+            'user' => $user,
         ];
 
         return $this->renderAdminView('pages/users/show', $data);
     }
 
     /**
-     * Show the form for editing the specified user
+     * Show the form for editing the specified user.
      */
     public function edit($id = null)
     {
@@ -94,20 +90,18 @@ class Users extends BaseThemeController
         $this->setBreadcrumb([
             ['title' => 'Dashboard', 'url' => base_url()],
             ['title' => 'Users', 'url' => base_url('users')],
-            ['title' => 'Edit', 'url' => base_url('users/edit/' . $id)]
+            ['title' => 'Edit', 'url' => base_url('users/edit/' . $id)],
         ]);
 
         $data = [
-            'user' => $user
+            'user' => $user,
         ];
 
         return $this->renderAdminView('pages/users/edit', $data);
     }
 
-
-
     /**
-     * Search users
+     * Search users.
      */
     public function search()
     {
@@ -127,15 +121,14 @@ class Users extends BaseThemeController
         $this->setBreadcrumb([
             ['title' => 'Dashboard', 'url' => base_url()],
             ['title' => 'Users', 'url' => base_url('users')],
-            ['title' => 'Search', 'url' => base_url('users/search')]
+            ['title' => 'Search', 'url' => base_url('users/search')],
         ]);
 
         $data = [
             'users' => $users,
-            'search' => $search
+            'search' => $search,
         ];
 
         return $this->renderAdminView('pages/users/search', $data);
     }
-
 }

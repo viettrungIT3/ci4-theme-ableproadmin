@@ -1,7 +1,7 @@
 <?php
 /**
- * Form Select Element
- * 
+ * Form Select Element.
+ *
  * Usage:
  * echo view('elements/form_select', [
  *     'name' => 'status',
@@ -20,7 +20,6 @@
  *     'error' => $validation->getError('status')
  * ]);
  */
-
 $required = $required ?? false;
 $disabled = $disabled ?? false;
 $multiple = $multiple ?? false;

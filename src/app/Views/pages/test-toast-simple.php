@@ -4,7 +4,7 @@ use App\Helpers\ElementHelper;
 // Breadcrumb
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
-    ['title' => 'Test Toast Simple', 'url' => base_url('test-toast-simple'), 'active' => true]
+    ['title' => 'Test Toast Simple', 'url' => base_url('test-toast-simple'), 'active' => true],
 ]);
 ?>
 
@@ -26,18 +26,18 @@ echo ElementHelper::breadcrumb([
             </div>
         </div>',
         [
-            'title' => 'Simple Toast Test'
+            'title' => 'Simple Toast Test',
         ]
     ) ?>
 </div>
 <!-- [ Test Toast Simple ] end -->
 
 <script>
-    console.log('Simple toast test page loaded');
-    console.log('Toast object available:', typeof Toast !== 'undefined');
+    // Simple toast test page loaded
+    // Toast object available: typeof Toast !== 'undefined'
 
     function testToast() {
-        console.log('Testing toast...');
+        // Testing toast...
         if (typeof Toast !== 'undefined') {
             Toast.success('Toast is working!');
         } else {
@@ -47,7 +47,7 @@ echo ElementHelper::breadcrumb([
 
     // Test immediately
     setTimeout(() => {
-        console.log('Delayed test - Toast available:', typeof Toast !== 'undefined');
+        // Delayed test - Toast available: typeof Toast !== 'undefined'
         if (typeof Toast !== 'undefined') {
             Toast.info('Auto test message');
         }

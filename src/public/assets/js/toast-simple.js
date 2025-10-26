@@ -148,4 +148,4 @@ class Toast {
 // Make Toast available globally
 window.Toast = Toast;
 
-console.log('Simple Toast system loaded');
+// Simple Toast system loaded

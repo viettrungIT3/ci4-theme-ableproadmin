@@ -10,8 +10,9 @@ class Login extends BaseThemeController
     {
         $this->setPageTitle('Login');
         $this->setBreadcrumb([
-            ['title' => 'Login', 'url' => '/auth/login', 'active' => true]
+            ['title' => 'Login', 'url' => '/auth/login', 'active' => true],
         ]);
+
         return $this->renderAuthView('pages/auth/login');
     }
 

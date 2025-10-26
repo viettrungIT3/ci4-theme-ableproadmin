@@ -1,7 +1,7 @@
 <?php
 /**
- * Alert Element
- * 
+ * Alert Element.
+ *
  * Usage:
  * echo view('elements/alert', [
  *     'type' => 'success', // primary, secondary, success, danger, warning, info, dark
@@ -11,7 +11,6 @@
  *     'title' => 'Alert Title' // optional title
  * ]);
  */
-
 $type = $type ?? 'primary';
 $dismissible = $dismissible ?? false;
 $icon = $icon ?? null;

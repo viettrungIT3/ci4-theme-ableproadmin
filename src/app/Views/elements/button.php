@@ -1,7 +1,7 @@
 <?php
 /**
- * Button Element
- * 
+ * Button Element.
+ *
  * Usage:
  * echo view('elements/button', [
  *     'type' => 'primary', // primary, secondary, success, danger, warning, info, light, dark, link
@@ -15,7 +15,6 @@
  *     'attributes' => ['data-bs-toggle' => 'modal'] // additional attributes
  * ]);
  */
-
 $type = $type ?? 'primary';
 $variant = $variant ?? 'solid';
 $size = $size ?? 'md';

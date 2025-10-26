@@ -5,7 +5,7 @@ use App\Helpers\ElementHelper;
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
     ['title' => 'Users', 'url' => base_url('users')],
-    ['title' => 'Edit', 'url' => base_url('users/edit/' . $user['id']), 'active' => true]
+    ['title' => 'Edit', 'url' => base_url('users/edit/' . $user['id']), 'active' => true],
 ]);
 
 // Success/Error alerts
@@ -28,7 +28,7 @@ if (session()->getFlashdata('error')) {
                     'value' => $user['username'],
                     'placeholder' => 'Enter username',
                     'required' => false,
-                    'help_text' => 'Leave unchanged or enter new username'
+                    'help_text' => 'Leave unchanged or enter new username',
                 ]) . '
                 </div>
                 <div class="col-md-6">
@@ -39,7 +39,7 @@ if (session()->getFlashdata('error')) {
                     'placeholder' => 'Email address',
                     'required' => false,
                     'readonly' => true,
-                    'help_text' => 'Email cannot be changed'
+                    'help_text' => 'Email cannot be changed',
                 ]) . '
                 </div>
             </div>
@@ -51,7 +51,7 @@ if (session()->getFlashdata('error')) {
                     'value' => $user['first_name'],
                     'placeholder' => 'Enter first name',
                     'required' => false,
-                    'help_text' => 'Enter new first name'
+                    'help_text' => 'Enter new first name',
                 ]) . '
                 </div>
                 <div class="col-md-6">
@@ -60,7 +60,7 @@ if (session()->getFlashdata('error')) {
                     'value' => $user['last_name'],
                     'placeholder' => 'Enter last name',
                     'required' => false,
-                    'help_text' => 'Enter new last name'
+                    'help_text' => 'Enter new last name',
                 ]) . '
                 </div>
             </div>
@@ -71,7 +71,7 @@ if (session()->getFlashdata('error')) {
                     'label' => 'Password',
                     'type' => 'password',
                     'placeholder' => 'Enter new password (leave blank to keep current)',
-                    'help_text' => 'Leave blank to keep current password'
+                    'help_text' => 'Leave blank to keep current password',
                 ]) . '
                 </div>
                 <div class="col-md-6">
@@ -79,10 +79,10 @@ if (session()->getFlashdata('error')) {
                     'label' => 'Status',
                     'options' => [
                         '1' => 'Active',
-                        '0' => 'Inactive'
+                        '0' => 'Inactive',
                     ],
                     'value' => $user['is_active'],
-                    'help_text' => 'User account status'
+                    'help_text' => 'User account status',
                 ]) . '
                 </div>
             </div>
@@ -93,21 +93,21 @@ if (session()->getFlashdata('error')) {
                     'icon' => 'ti ti-check',
                     'attributes' => [
                         'id' => 'editUserBtn',
-                        'disabled' => true
-                    ]
+                        'disabled' => true,
+                    ],
                 ]) . '
                 ' . ElementHelper::button('Cancel', [
                     'type' => 'secondary',
                     'variant' => 'outline',
                     'href' => base_url('users/show/' . $user['id']),
                     'attributes' => [
-                        'id' => 'cancelBtn'
-                    ]
+                        'id' => 'cancelBtn',
+                    ],
                 ]) . '
             </div>
         </form>',
         [
-            'title' => 'Edit User'
+            'title' => 'Edit User',
         ]
     ) ?>
 </div>

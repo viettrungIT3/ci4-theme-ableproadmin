@@ -14,7 +14,7 @@ class ThemeService
     }
 
     /**
-     * Get current theme configuration
+     * Get current theme configuration.
      */
     public function getThemeConfig(): array
     {
@@ -25,12 +25,12 @@ class ThemeService
             'direction' => $this->getDirection(),
             'container' => $this->getContainer(),
             'color_preset' => $this->getColorPreset(),
-            'contrast' => $this->getContrast()
+            'contrast' => $this->getContrast(),
         ];
     }
 
     /**
-     * Get theme mode (light/dark/auto)
+     * Get theme mode (light/dark/auto).
      */
     public function getThemeMode(): string
     {
@@ -38,7 +38,7 @@ class ThemeService
     }
 
     /**
-     * Set theme mode
+     * Set theme mode.
      */
     public function setThemeMode(string $mode): void
     {
@@ -46,7 +46,7 @@ class ThemeService
     }
 
     /**
-     * Get layout type
+     * Get layout type.
      */
     public function getLayout(): string
     {
@@ -54,7 +54,7 @@ class ThemeService
     }
 
     /**
-     * Set layout type
+     * Set layout type.
      */
     public function setLayout(string $layout): void
     {
@@ -62,7 +62,7 @@ class ThemeService
     }
 
     /**
-     * Get sidebar caption setting
+     * Get sidebar caption setting.
      */
     public function getSidebarCaption(): bool
     {
@@ -70,7 +70,7 @@ class ThemeService
     }
 
     /**
-     * Set sidebar caption
+     * Set sidebar caption.
      */
     public function setSidebarCaption(bool $caption): void
     {
@@ -78,7 +78,7 @@ class ThemeService
     }
 
     /**
-     * Get direction (ltr/rtl)
+     * Get direction (ltr/rtl).
      */
     public function getDirection(): string
     {
@@ -86,7 +86,7 @@ class ThemeService
     }
 
     /**
-     * Set direction
+     * Set direction.
      */
     public function setDirection(string $direction): void
     {
@@ -94,7 +94,7 @@ class ThemeService
     }
 
     /**
-     * Get container type
+     * Get container type.
      */
     public function getContainer(): string
     {
@@ -102,7 +102,7 @@ class ThemeService
     }
 
     /**
-     * Set container type
+     * Set container type.
      */
     public function setContainer(string $container): void
     {
@@ -110,7 +110,7 @@ class ThemeService
     }
 
     /**
-     * Get color preset
+     * Get color preset.
      */
     public function getColorPreset(): string
     {
@@ -118,7 +118,7 @@ class ThemeService
     }
 
     /**
-     * Set color preset
+     * Set color preset.
      */
     public function setColorPreset(string $preset): void
     {
@@ -126,7 +126,7 @@ class ThemeService
     }
 
     /**
-     * Get contrast setting
+     * Get contrast setting.
      */
     public function getContrast(): bool
     {
@@ -134,7 +134,7 @@ class ThemeService
     }
 
     /**
-     * Set contrast
+     * Set contrast.
      */
     public function setContrast(bool $contrast): void
     {
@@ -142,7 +142,7 @@ class ThemeService
     }
 
     /**
-     * Reset all theme settings to default
+     * Reset all theme settings to default.
      */
     public function resetTheme(): void
     {
@@ -153,12 +153,12 @@ class ThemeService
             'theme_direction',
             'theme_container',
             'color_preset',
-            'theme_contrast'
+            'theme_contrast',
         ]);
     }
 
     /**
-     * Get theme CSS classes for body
+     * Get theme CSS classes for body.
      */
     public function getBodyClasses(): string
     {
@@ -170,7 +170,7 @@ class ThemeService
             'data-pc-layout' => $config['layout'],
             'data-pc-direction' => $config['direction'],
             'data-pc-theme_contrast' => $config['contrast'] ? 'true' : 'false',
-            'data-pc-theme' => $config['mode']
+            'data-pc-theme' => $config['mode'],
         ];
 
         $classString = '';
@@ -182,7 +182,7 @@ class ThemeService
     }
 
     /**
-     * Get theme assets path
+     * Get theme assets path.
      */
     public function getThemePath(): string
     {
@@ -190,7 +190,7 @@ class ThemeService
     }
 
     /**
-     * Get CSS file path
+     * Get CSS file path.
      */
     public function getCssPath(string $file = 'style.css'): string
     {
@@ -198,7 +198,7 @@ class ThemeService
     }
 
     /**
-     * Get JS file path
+     * Get JS file path.
      */
     public function getJsPath(string $file = 'pcoded.js'): string
     {
@@ -206,7 +206,7 @@ class ThemeService
     }
 
     /**
-     * Get image path
+     * Get image path.
      */
     public function getImagePath(string $file): string
     {

@@ -1,7 +1,7 @@
 <?php
 /**
- * Modal Element
- * 
+ * Modal Element.
+ *
  * Usage:
  * echo view('elements/modal', [
  *     'id' => 'myModal',
@@ -15,7 +15,6 @@
  *     'scrollable' => false // scrollable content
  * ]);
  */
-
 $id = $id ?? 'modal';
 $size = $size ?? 'md';
 $backdrop = $backdrop ?? true;

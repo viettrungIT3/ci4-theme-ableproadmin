@@ -5,7 +5,7 @@ use App\Helpers\ElementHelper;
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
     ['title' => 'Users', 'url' => base_url('users')],
-    ['title' => 'Search', 'url' => base_url('users/search'), 'active' => true]
+    ['title' => 'Search', 'url' => base_url('users/search'), 'active' => true],
 ]);
 
 // Success/Error alerts
@@ -29,20 +29,21 @@ if (session()->getFlashdata('error')) {
                         ' . ElementHelper::button('Search', [
                     'type' => 'primary',
                     'icon' => 'ti ti-search',
-                    'options' => ['type' => 'submit']
+                    'options' => ['type' => 'submit'],
                 ]) . '
                     </div>
                 </form>
             </div>
             <div class="col-md-4 text-end">
-                ' . (!empty($search) ?
+                ' . (
+                    !empty($search) ?
             ElementHelper::button('Clear Search', [
                 'type' => 'secondary',
                 'variant' => 'outline',
                 'icon' => 'ti ti-x',
-                'href' => base_url('users')
+                'href' => base_url('users'),
             ]) : ''
-        ) . '
+                ) . '
             </div>
         </div>' .
 
@@ -65,9 +66,10 @@ if (session()->getFlashdata('error')) {
                     </tr>
                 </thead>
                 <tbody>' .
-        (!empty($users) ?
-            implode('', array_map(function ($user) {
-                    return '<tr data-user-id="' . $user['id'] . '">
+        (
+            !empty($users) ?
+                    implode('', array_map(function ($user) {
+                        return '<tr data-user-id="' . $user['id'] . '">
                                 <td>' . $user['id'] . '</td>
                                 <td>
                                     <img src="/assets/images/user/avatar-1.jpg" alt="avatar" class="rounded-circle" width="40" height="40">
@@ -80,19 +82,19 @@ if (session()->getFlashdata('error')) {
                                 <td>
                                     <div class="btn-group" role="group">
                                         ' . ElementHelper::button('', [
-                                    'type' => 'primary',
-                                    'variant' => 'outline',
-                                    'size' => 'sm',
-                                    'icon' => 'ti ti-eye',
-                                    'href' => base_url('users/show/' . $user['id'])
-                                ]) . '
+                                        'type' => 'primary',
+                                        'variant' => 'outline',
+                                        'size' => 'sm',
+                                        'icon' => 'ti ti-eye',
+                                        'href' => base_url('users/show/' . $user['id']),
+                                    ]) . '
                                         ' . ElementHelper::button('', [
-                                    'type' => 'warning',
-                                    'variant' => 'outline',
-                                    'size' => 'sm',
-                                    'icon' => 'ti ti-edit',
-                                    'href' => base_url('users/edit/' . $user['id'])
-                                ]) . '
+                                        'type' => 'warning',
+                                        'variant' => 'outline',
+                                        'size' => 'sm',
+                                        'icon' => 'ti ti-edit',
+                                        'href' => base_url('users/edit/' . $user['id']),
+                                    ]) . '
                                         <button class="btn btn-sm btn-outline-' . ($user['is_active'] ? 'danger' : 'success') . '"
                                                 onclick="toggleUserStatus(' . $user['id'] . ', ' . ($user['is_active'] ? 'false' : 'true') . ')">
                                             <i class="ti ti-' . ($user['is_active'] ? 'ban' : 'check') . '"></i>
@@ -104,8 +106,8 @@ if (session()->getFlashdata('error')) {
                                     </div>
                                 </td>
                             </tr>';
-                }, $users)) :
-            '<tr><td colspan="8" class="text-center">' . (!empty($search) ? 'No users found matching your search criteria' : 'No users found') . '</td></tr>'
+                    }, $users)) :
+                    '<tr><td colspan="8" class="text-center">' . (!empty($search) ? 'No users found matching your search criteria' : 'No users found') . '</td></tr>'
         ) .
         '</tbody>
             </table>
@@ -116,8 +118,8 @@ if (session()->getFlashdata('error')) {
                 'type' => 'secondary',
                 'variant' => 'outline',
                 'icon' => 'ti ti-arrow-left',
-                'href' => base_url('users')
-            ])
+                'href' => base_url('users'),
+            ]),
         ]
     ) ?>
 </div>

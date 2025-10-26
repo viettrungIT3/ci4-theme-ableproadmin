@@ -1,7 +1,7 @@
 <?php
 /**
- * Data Table Element
- * 
+ * Data Table Element.
+ *
  * Usage:
  * echo view('elements/data_table', [
  *     'id' => 'usersTable',
@@ -19,7 +19,6 @@
  *     'responsive' => true
  * ]);
  */
-
 $id = $id ?? 'dataTable';
 $searchable = $searchable ?? true;
 $sortable = $sortable ?? true;

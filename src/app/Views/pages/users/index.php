@@ -4,7 +4,7 @@ use App\Helpers\ElementHelper;
 // Breadcrumb
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
-    ['title' => 'Users', 'url' => base_url('users'), 'active' => true]
+    ['title' => 'Users', 'url' => base_url('users'), 'active' => true],
 ]);
 
 // Success/Error alerts
@@ -49,9 +49,10 @@ if (session()->getFlashdata('error')) {
                     </tr>
                 </thead>
                 <tbody>' .
-        (!empty($users) ?
+        (
+            !empty($users) ?
             implode('', array_map(function ($user) {
-                    return '<tr data-user-id="' . $user['id'] . '">
+                return '<tr data-user-id="' . $user['id'] . '">
                                 <td>' . $user['id'] . '</td>
                                 <td>
                                     <img src="/assets/images/user/avatar-1.jpg" alt="avatar" class="rounded-circle" width="40" height="40">
@@ -64,19 +65,19 @@ if (session()->getFlashdata('error')) {
                                 <td>
                                     <div class="btn-group" role="group">
                                         ' . ElementHelper::button('', [
-                                    'type' => 'primary',
-                                    'variant' => 'outline',
-                                    'size' => 'sm',
-                                    'icon' => 'ti ti-eye',
-                                    'href' => base_url('users/show/' . $user['id'])
-                                ]) . '
+                                'type' => 'primary',
+                                'variant' => 'outline',
+                                'size' => 'sm',
+                                'icon' => 'ti ti-eye',
+                                'href' => base_url('users/show/' . $user['id']),
+                            ]) . '
                                         ' . ElementHelper::button('', [
-                                    'type' => 'warning',
-                                    'variant' => 'outline',
-                                    'size' => 'sm',
-                                    'icon' => 'ti ti-edit',
-                                    'href' => base_url('users/edit/' . $user['id'])
-                                ]) . '
+                                'type' => 'warning',
+                                'variant' => 'outline',
+                                'size' => 'sm',
+                                'icon' => 'ti ti-edit',
+                                'href' => base_url('users/edit/' . $user['id']),
+                            ]) . '
                                         <button class="btn btn-sm btn-outline-' . ($user['is_active'] ? 'danger' : 'success') . '"
                                                 onclick="toggleUserStatus(' . $user['id'] . ', ' . ($user['is_active'] ? 'false' : 'true') . ')">
                                             <i class="ti ti-' . ($user['is_active'] ? 'ban' : 'check') . '"></i>
@@ -88,7 +89,7 @@ if (session()->getFlashdata('error')) {
                                     </div>
                                 </td>
                             </tr>';
-                }, $users)) :
+            }, $users)) :
             '<tr><td colspan="8" class="text-center">No users found</td></tr>'
         ) .
         '</tbody>
@@ -97,8 +98,8 @@ if (session()->getFlashdata('error')) {
         [
             'title' => 'Users Management',
             'footer' => ElementHelper::primaryButton('Add New User', base_url('users/create'), [
-                'icon' => 'ti ti-plus'
-            ])
+                'icon' => 'ti ti-plus',
+            ]),
         ]
     ) ?>
 </div>
