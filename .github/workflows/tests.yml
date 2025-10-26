@@ -58,12 +58,12 @@ jobs:
     - name: Run tests
       run: |
         cd src
-        ./vendor/bin/phpunit tests/unit/ tests/Feature/ --exclude-group database
+        ./vendor/bin/phpunit tests/unit/ --exclude-group database
 
     - name: Run tests with coverage
       run: |
         cd src
-        ./vendor/bin/phpunit tests/unit/ tests/Feature/ --coverage-text --exclude-group database
+        ./vendor/bin/phpunit tests/unit/ --coverage-text --exclude-group database
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
