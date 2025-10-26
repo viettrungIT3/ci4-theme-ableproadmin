@@ -10,6 +10,9 @@ parameters:
         - '#Method .* does not exist#'
         - '#Property .* does not exist#'
         - '#Access to an undefined property#'
+        - '#Function .* not found#'
+        - '#Constant .* not found#'
+        - '#Call to static method .* on an unknown class#'
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: false
