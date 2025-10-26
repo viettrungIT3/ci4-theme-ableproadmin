@@ -1,9 +1,9 @@
 <?php
 /**
- * Modal Component
- * 
+ * Modal Component.
+ *
  * A reusable modal component for displaying dialogs
- * 
+ *
  * @param string $id Modal ID (required)
  * @param string $title Modal title
  * @param string $content Modal content
@@ -62,8 +62,8 @@ foreach ($attributes as $key => $value) {
 
 // Build data attributes
 $dataAttributes = '';
-$dataAttributes .= " data-bs-backdrop=\"" . ($backdrop ? 'true' : 'false') . "\"";
-$dataAttributes .= " data-bs-keyboard=\"" . ($keyboard ? 'true' : 'false') . "\"";
+$dataAttributes .= ' data-bs-backdrop="' . ($backdrop ? 'true' : 'false') . '"';
+$dataAttributes .= ' data-bs-keyboard="' . ($keyboard ? 'true' : 'false') . '"';
 ?>
 
 <div 

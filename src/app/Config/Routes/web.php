@@ -2,11 +2,10 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/**
+/*
  * Web Routes
  * @var RouteCollection $routes
  */
-
 
 // Home route
 $routes->get('/', 'Home::index');

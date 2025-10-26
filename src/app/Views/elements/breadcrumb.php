@@ -1,7 +1,7 @@
 <?php
 /**
- * Breadcrumb Element
- * 
+ * Breadcrumb Element.
+ *
  * Usage:
  * echo view('elements/breadcrumb', [
  *     'items' => [
@@ -12,7 +12,6 @@
  *     'class' => 'mb-3'
  * ]);
  */
-
 $class = $class ?? '';
 $items = $items ?? [];
 ?>

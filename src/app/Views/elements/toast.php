@@ -1,7 +1,7 @@
 <?php
 /**
- * Toast Notification Element
- * 
+ * Toast Notification Element.
+ *
  * Usage:
  * echo view('elements/toast', [
  *     'id' => 'toast-1',
@@ -13,7 +13,6 @@
  *     'dismissible' => true
  * ]);
  */
-
 $id = $id ?? 'toast-' . uniqid();
 $type = $type ?? 'info';
 $title = $title ?? '';
@@ -27,7 +26,7 @@ $positionClasses = [
     'top-center' => 'toast-top-center',
     'top-right' => 'toast-top-right',
     'bottom-right' => 'toast-bottom-right',
-    'bottom-left' => 'toast-bottom-left'
+    'bottom-left' => 'toast-bottom-left',
 ];
 
 $positionClass = $positionClasses[$position] ?? 'toast-top-center';
@@ -37,7 +36,7 @@ $typeClasses = [
     'success' => 'bg-success',
     'error' => 'bg-danger',
     'warning' => 'bg-warning',
-    'info' => 'bg-info'
+    'info' => 'bg-info',
 ];
 
 $typeClass = $typeClasses[$type] ?? 'bg-info';
@@ -47,7 +46,7 @@ $icons = [
     'success' => 'ti ti-check-circle',
     'error' => 'ti ti-alert-circle',
     'warning' => 'ti ti-alert-triangle',
-    'info' => 'ti ti-info-circle'
+    'info' => 'ti ti-info-circle',
 ];
 
 $icon = $icons[$type] ?? 'ti ti-info-circle';

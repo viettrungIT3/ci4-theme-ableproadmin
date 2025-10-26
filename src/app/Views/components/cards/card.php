@@ -1,9 +1,9 @@
 <?php
 /**
- * Card Component
- * 
+ * Card Component.
+ *
  * A reusable card component with various layouts and styles
- * 
+ *
  * @param string $title Card title (optional)
  * @param string $subtitle Card subtitle (optional)
  * @param string $content Card content

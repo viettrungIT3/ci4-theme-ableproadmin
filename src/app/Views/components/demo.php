@@ -32,23 +32,23 @@
                                 <?= $this->include('components/index') ?>
                                 <?php
                                 renderComponent('buttons', 'button', ['text' => 'Primary', 'type' => 'primary']);
-                                renderComponent('buttons', 'button', ['text' => 'Secondary', 'type' => 'secondary']);
-                                renderComponent('buttons', 'button', ['text' => 'Success', 'type' => 'success']);
-                                renderComponent('buttons', 'button', ['text' => 'Danger', 'type' => 'danger']);
-                                renderComponent('buttons', 'button', ['text' => 'Warning', 'type' => 'warning']);
-                                renderComponent('buttons', 'button', ['text' => 'Info', 'type' => 'info']);
-                                ?>
+renderComponent('buttons', 'button', ['text' => 'Secondary', 'type' => 'secondary']);
+renderComponent('buttons', 'button', ['text' => 'Success', 'type' => 'success']);
+renderComponent('buttons', 'button', ['text' => 'Danger', 'type' => 'danger']);
+renderComponent('buttons', 'button', ['text' => 'Warning', 'type' => 'warning']);
+renderComponent('buttons', 'button', ['text' => 'Info', 'type' => 'info']);
+?>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h6>Outline Buttons</h6>
                             <div class="d-flex flex-wrap gap-2 mb-3">
                                 <?php
-                                renderComponent('buttons', 'button', ['text' => 'Primary', 'type' => 'primary', 'variant' => 'outline']);
-                                renderComponent('buttons', 'button', ['text' => 'Secondary', 'type' => 'secondary', 'variant' => 'outline']);
-                                renderComponent('buttons', 'button', ['text' => 'Success', 'type' => 'success', 'variant' => 'outline']);
-                                renderComponent('buttons', 'button', ['text' => 'Danger', 'type' => 'danger', 'variant' => 'outline']);
-                                ?>
+renderComponent('buttons', 'button', ['text' => 'Primary', 'type' => 'primary', 'variant' => 'outline']);
+renderComponent('buttons', 'button', ['text' => 'Secondary', 'type' => 'secondary', 'variant' => 'outline']);
+renderComponent('buttons', 'button', ['text' => 'Success', 'type' => 'success', 'variant' => 'outline']);
+renderComponent('buttons', 'button', ['text' => 'Danger', 'type' => 'danger', 'variant' => 'outline']);
+?>
                             </div>
                         </div>
                     </div>
@@ -57,19 +57,19 @@
                             <h6>Button Sizes</h6>
                             <div class="d-flex flex-wrap gap-2 mb-3">
                                 <?php
-                                renderComponent('buttons', 'button', ['text' => 'Small', 'type' => 'primary', 'size' => 'sm']);
-                                renderComponent('buttons', 'button', ['text' => 'Default', 'type' => 'primary']);
-                                renderComponent('buttons', 'button', ['text' => 'Large', 'type' => 'primary', 'size' => 'lg']);
-                                ?>
+renderComponent('buttons', 'button', ['text' => 'Small', 'type' => 'primary', 'size' => 'sm']);
+renderComponent('buttons', 'button', ['text' => 'Default', 'type' => 'primary']);
+renderComponent('buttons', 'button', ['text' => 'Large', 'type' => 'primary', 'size' => 'lg']);
+?>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h6>Buttons with Icons</h6>
                             <div class="d-flex flex-wrap gap-2 mb-3">
                                 <?php
-                                renderComponent('buttons', 'button', ['text' => 'Save', 'type' => 'success', 'icon' => 'ti ti-check', 'iconPosition' => 'left']);
-                                renderComponent('buttons', 'button', ['text' => 'Delete', 'type' => 'danger', 'icon' => 'ti ti-trash', 'iconPosition' => 'right']);
-                                ?>
+renderComponent('buttons', 'button', ['text' => 'Save', 'type' => 'success', 'icon' => 'ti ti-check', 'iconPosition' => 'left']);
+renderComponent('buttons', 'button', ['text' => 'Delete', 'type' => 'danger', 'icon' => 'ti ti-trash', 'iconPosition' => 'right']);
+?>
                             </div>
                         </div>
                     </div>
@@ -91,32 +91,32 @@
                             <h6>Basic Card</h6>
                             <?php
                             renderComponent('cards', 'card', [
-                                'title' => 'Card Title',
-                                'subtitle' => 'Card subtitle',
-                                'content' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+'title' => 'Card Title',
+'subtitle' => 'Card subtitle',
+'content' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
                             ]);
-                            ?>
+?>
                         </div>
                         <div class="col-md-4">
                             <h6>Card with Image</h6>
                             <?php
-                            renderComponent('cards', 'card', [
-                                'title' => 'Card with Image',
-                                'content' => 'This card has an image at the top.',
-                                'image' => '/assets/images/light-box/l3.jpg',
-                                'imagePosition' => 'top'
-                            ]);
-                            ?>
+renderComponent('cards', 'card', [
+    'title' => 'Card with Image',
+    'content' => 'This card has an image at the top.',
+    'image' => '/assets/images/light-box/l3.jpg',
+    'imagePosition' => 'top',
+]);
+?>
                         </div>
                         <div class="col-md-4">
                             <h6>Colored Card</h6>
                             <?php
-                            renderComponent('cards', 'card', [
-                                'title' => 'Success Card',
-                                'content' => 'This is a success colored card.',
-                                'variant' => 'success'
-                            ]);
-                            ?>
+renderComponent('cards', 'card', [
+    'title' => 'Success Card',
+    'content' => 'This is a success colored card.',
+    'variant' => 'success',
+]);
+?>
                         </div>
                     </div>
                 </div>
@@ -136,18 +136,18 @@
                         <div class="col-md-6">
                             <h6>Basic Alerts</h6>
                             <?php
-                            renderComponent('alerts', 'alert', ['message' => 'A simple primary alert!', 'type' => 'primary']);
-                            renderComponent('alerts', 'alert', ['message' => 'A simple success alert!', 'type' => 'success']);
-                            renderComponent('alerts', 'alert', ['message' => 'A simple warning alert!', 'type' => 'warning']);
-                            renderComponent('alerts', 'alert', ['message' => 'A simple danger alert!', 'type' => 'danger']);
-                            ?>
+renderComponent('alerts', 'alert', ['message' => 'A simple primary alert!', 'type' => 'primary']);
+renderComponent('alerts', 'alert', ['message' => 'A simple success alert!', 'type' => 'success']);
+renderComponent('alerts', 'alert', ['message' => 'A simple warning alert!', 'type' => 'warning']);
+renderComponent('alerts', 'alert', ['message' => 'A simple danger alert!', 'type' => 'danger']);
+?>
                         </div>
                         <div class="col-md-6">
                             <h6>Dismissible Alerts</h6>
                             <?php
-                            renderComponent('alerts', 'alert', ['message' => 'This alert can be dismissed!', 'type' => 'info', 'dismissible' => true]);
-                            renderComponent('alerts', 'alert', ['message' => 'Another dismissible alert!', 'type' => 'warning', 'dismissible' => true]);
-                            ?>
+renderComponent('alerts', 'alert', ['message' => 'This alert can be dismissed!', 'type' => 'info', 'dismissible' => true]);
+renderComponent('alerts', 'alert', ['message' => 'Another dismissible alert!', 'type' => 'warning', 'dismissible' => true]);
+?>
                         </div>
                     </div>
                 </div>
@@ -167,39 +167,39 @@
                         <div class="col-md-6">
                             <h6>Basic Inputs</h6>
                             <?php
-                            renderComponent('forms', 'input', [
-                                'name' => 'username',
-                                'label' => 'Username',
-                                'placeholder' => 'Enter username',
-                                'required' => true
-                            ]);
-                            renderComponent('forms', 'input', [
-                                'name' => 'email',
-                                'type' => 'email',
-                                'label' => 'Email',
-                                'placeholder' => 'Enter email',
-                                'required' => true
-                            ]);
-                            ?>
+renderComponent('forms', 'input', [
+    'name' => 'username',
+    'label' => 'Username',
+    'placeholder' => 'Enter username',
+    'required' => true,
+]);
+renderComponent('forms', 'input', [
+    'name' => 'email',
+    'type' => 'email',
+    'label' => 'Email',
+    'placeholder' => 'Enter email',
+    'required' => true,
+]);
+?>
                         </div>
                         <div class="col-md-6">
                             <h6>Input with Validation</h6>
                             <?php
-                            renderComponent('forms', 'input', [
-                                'name' => 'valid_input',
-                                'label' => 'Valid Input',
-                                'value' => 'Valid value',
-                                'state' => 'valid',
-                                'feedback' => 'Looks good!'
-                            ]);
-                            renderComponent('forms', 'input', [
-                                'name' => 'invalid_input',
-                                'label' => 'Invalid Input',
-                                'value' => 'Invalid value',
-                                'state' => 'invalid',
-                                'feedback' => 'Please provide a valid value.'
-                            ]);
-                            ?>
+renderComponent('forms', 'input', [
+    'name' => 'valid_input',
+    'label' => 'Valid Input',
+    'value' => 'Valid value',
+    'state' => 'valid',
+    'feedback' => 'Looks good!',
+]);
+renderComponent('forms', 'input', [
+    'name' => 'invalid_input',
+    'label' => 'Invalid Input',
+    'value' => 'Invalid value',
+    'state' => 'invalid',
+    'feedback' => 'Please provide a valid value.',
+]);
+?>
                         </div>
                     </div>
                 </div>
@@ -218,12 +218,12 @@
                     <?php
                     renderComponent('navigation', 'breadcrumb', [
                         'items' => [
-                            ['text' => 'Home', 'url' => '/'],
-                            ['text' => 'Components', 'url' => '/components'],
-                            ['text' => 'Demo', 'url' => '#']
-                        ]
+['text' => 'Home', 'url' => '/'],
+['text' => 'Components', 'url' => '/components'],
+['text' => 'Demo', 'url' => '#'],
+                        ],
                     ]);
-                    ?>
+?>
                 </div>
             </div>
         </div>
@@ -242,13 +242,13 @@
                     </button>
                     
                     <?php
-                    renderComponent('modals', 'modal', [
-                        'id' => 'demoModal',
-                        'title' => 'Demo Modal',
-                        'content' => 'This is a demo modal content. You can put any content here.',
-                        'footer' => '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save changes</button>'
-                    ]);
-                    ?>
+renderComponent('modals', 'modal', [
+    'id' => 'demoModal',
+    'title' => 'Demo Modal',
+    'content' => 'This is a demo modal content. You can put any content here.',
+    'footer' => '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save changes</button>',
+]);
+?>
                 </div>
             </div>
         </div>

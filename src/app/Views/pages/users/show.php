@@ -5,7 +5,7 @@ use App\Helpers\ElementHelper;
 echo ElementHelper::breadcrumb([
     ['title' => 'Dashboard', 'url' => base_url()],
     ['title' => 'Users', 'url' => base_url('users')],
-    ['title' => 'Details', 'url' => base_url('users/show/' . $user['id']), 'active' => true]
+    ['title' => 'Details', 'url' => base_url('users/show/' . $user['id']), 'active' => true],
 ]);
 
 // Success/Error alerts
@@ -102,7 +102,7 @@ if (session()->getFlashdata('error')) {
             ' . ElementHelper::button('Edit User', [
                     'type' => 'warning',
                     'icon' => 'ti ti-edit',
-                    'href' => base_url('users/edit/' . $user['id'])
+                    'href' => base_url('users/edit/' . $user['id']),
                 ]) . '
             <button class="btn btn-' . ($user['is_active'] ? 'danger' : 'success') . '"
                     onclick="toggleUserStatus(' . $user['id'] . ', ' . ($user['is_active'] ? 'false' : 'true') . ')">
@@ -120,8 +120,8 @@ if (session()->getFlashdata('error')) {
                 'type' => 'secondary',
                 'variant' => 'outline',
                 'icon' => 'ti ti-arrow-left',
-                'href' => base_url('users')
-            ])
+                'href' => base_url('users'),
+            ]),
         ]
     ) ?>
 </div>

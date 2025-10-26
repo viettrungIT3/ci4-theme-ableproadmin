@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
+use CodeIgniter\RESTful\ResourceController;
 
 class ApiController extends ResourceController
 {
@@ -12,7 +12,7 @@ class ApiController extends ResourceController
     protected $format = 'json';
 
     /**
-     * Return a JSON response
+     * Return a JSON response.
      */
     protected function respond($data = null, ?int $status = null, string $message = '')
     {
@@ -20,14 +20,14 @@ class ApiController extends ResourceController
         $response = [
             'status' => $status,
             'message' => $message ?: $this->getStatusMessage($status),
-            'data' => $data
+            'data' => $data,
         ];
 
         return $this->response->setJSON($response)->setStatusCode($status);
     }
 
     /**
-     * Return success response
+     * Return success response.
      */
     protected function success($data = null, string $message = 'Success', int $status = 200)
     {
@@ -35,7 +35,7 @@ class ApiController extends ResourceController
     }
 
     /**
-     * Return error response
+     * Return error response.
      */
     protected function error(string $message = 'Error', int $status = 400, $data = null)
     {
@@ -43,7 +43,7 @@ class ApiController extends ResourceController
     }
 
     /**
-     * Return validation error response
+     * Return validation error response.
      */
     protected function validationError(array $errors)
     {
@@ -51,7 +51,7 @@ class ApiController extends ResourceController
     }
 
     /**
-     * Get status message based on status code
+     * Get status message based on status code.
      */
     private function getStatusMessage(int $status): string
     {
@@ -63,7 +63,7 @@ class ApiController extends ResourceController
             403 => 'Forbidden',
             404 => 'Not Found',
             422 => 'Unprocessable Entity',
-            500 => 'Internal Server Error'
+            500 => 'Internal Server Error',
         ];
 
         return $messages[$status] ?? 'Unknown';

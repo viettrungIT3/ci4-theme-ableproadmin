@@ -24,7 +24,7 @@ abstract class BaseThemeController extends BaseController
     }
 
     /**
-     * Render view with theme layout
+     * Render view with theme layout.
      */
     protected function renderView(string $view, array $data = [], string $layout = 'main'): string
     {
@@ -32,12 +32,12 @@ abstract class BaseThemeController extends BaseController
 
         return view("layouts/{$layout}", [
             'content' => view($view, $this->data),
-            'data' => $this->data
+            'data' => $this->data,
         ]);
     }
 
     /**
-     * Render admin view
+     * Render admin view.
      */
     protected function renderAdminView(string $view, array $data = []): string
     {
@@ -45,7 +45,7 @@ abstract class BaseThemeController extends BaseController
     }
 
     /**
-     * Render auth view
+     * Render auth view.
      */
     protected function renderAuthView(string $view, array $data = []): string
     {
@@ -53,7 +53,7 @@ abstract class BaseThemeController extends BaseController
     }
 
     /**
-     * Get theme service
+     * Get theme service.
      */
     protected function getThemeService(): ThemeService
     {
@@ -61,7 +61,7 @@ abstract class BaseThemeController extends BaseController
     }
 
     /**
-     * Set page title
+     * Set page title.
      */
     protected function setPageTitle(string $title): void
     {
@@ -69,7 +69,7 @@ abstract class BaseThemeController extends BaseController
     }
 
     /**
-     * Set breadcrumb
+     * Set breadcrumb.
      */
     protected function setBreadcrumb(array $breadcrumb): void
     {
@@ -77,7 +77,7 @@ abstract class BaseThemeController extends BaseController
     }
 
     /**
-     * Add CSS file
+     * Add CSS file.
      */
     protected function addCss(string $file): void
     {
@@ -88,7 +88,7 @@ abstract class BaseThemeController extends BaseController
     }
 
     /**
-     * Add JS file
+     * Add JS file.
      */
     protected function addJs(string $file): void
     {

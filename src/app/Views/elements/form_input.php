@@ -1,7 +1,7 @@
 <?php
 /**
- * Form Input Element
- * 
+ * Form Input Element.
+ *
  * Usage:
  * echo view('elements/form_input', [
  *     'name' => 'username',
@@ -18,7 +18,6 @@
  *     'attributes' => ['data-test' => 'username']
  * ]);
  */
-
 $type = $type ?? 'text';
 $required = $required ?? false;
 $disabled = $disabled ?? false;

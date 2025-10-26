@@ -1,7 +1,7 @@
 <?php
 /**
- * Card Element
- * 
+ * Card Element.
+ *
  * Usage:
  * echo view('elements/card', [
  *     'title' => 'Card Title', // optional
@@ -13,7 +13,6 @@
  *     'content' => 'Card content here'
  * ]);
  */
-
 $class = $class ?? '';
 $bodyClass = $body_class ?? '';
 ?>

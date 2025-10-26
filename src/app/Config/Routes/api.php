@@ -2,7 +2,7 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/**
+/*
  * @var RouteCollection $routes
  */
 
@@ -29,7 +29,7 @@ $routes->group('api', function ($routes) {
         return $this->response->setJSON([
             'status' => 'ok',
             'timestamp' => date('Y-m-d H:i:s'),
-            'version' => '1.0.0'
+            'version' => '1.0.0',
         ]);
     });
 });

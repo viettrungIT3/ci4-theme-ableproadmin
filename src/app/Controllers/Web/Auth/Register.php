@@ -10,8 +10,9 @@ class Register extends BaseThemeController
     {
         $this->setPageTitle('Register');
         $this->setBreadcrumb([
-            ['title' => 'Register', 'url' => '/auth/register', 'active' => true]
+            ['title' => 'Register', 'url' => '/auth/register', 'active' => true],
         ]);
+
         return $this->renderAuthView('pages/auth/register');
     }
 

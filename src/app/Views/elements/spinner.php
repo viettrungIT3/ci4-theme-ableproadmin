@@ -1,7 +1,7 @@
 <?php
 /**
- * Loading Spinner Element
- * 
+ * Loading Spinner Element.
+ *
  * Usage:
  * echo view('elements/spinner', [
  *     'size' => 'md', // sm, md, lg
@@ -11,7 +11,6 @@
  *     'class' => 'text-center'
  * ]);
  */
-
 $size = $size ?? 'md';
 $type = $type ?? 'border';
 $color = $color ?? 'primary';

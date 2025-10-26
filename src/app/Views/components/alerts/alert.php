@@ -1,9 +1,9 @@
 <?php
 /**
- * Alert Component
- * 
+ * Alert Component.
+ *
  * A reusable alert component for displaying messages
- * 
+ *
  * @param string $message Alert message
  * @param string $type Alert type (primary, secondary, success, danger, warning, info, dark)
  * @param string $title Alert title (optional)

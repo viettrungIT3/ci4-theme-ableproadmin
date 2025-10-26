@@ -1,9 +1,9 @@
 <?php
 /**
- * Breadcrumb Component
- * 
+ * Breadcrumb Component.
+ *
  * A reusable breadcrumb navigation component
- * 
+ *
  * @param array $items Array of breadcrumb items
  * @param string $separator Separator between items
  * @param string $class Additional CSS classes
@@ -39,19 +39,19 @@ $itemCount = count($items);
 foreach ($items as $index => $item) {
     $isLast = ($index === $itemCount - 1);
     $itemClasses = ['breadcrumb-item'];
-    
+
     if ($isLast) {
         $itemClasses[] = 'active';
     }
-    
+
     $breadcrumbItems .= '<li class="' . implode(' ', $itemClasses) . '">';
-    
+
     if ($isLast) {
         $breadcrumbItems .= $item['text'];
     } else {
         $breadcrumbItems .= '<a href="' . htmlspecialchars($item['url']) . '">' . htmlspecialchars($item['text']) . '</a>';
     }
-    
+
     $breadcrumbItems .= '</li>';
 }
 ?>

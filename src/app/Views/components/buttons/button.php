@@ -1,9 +1,9 @@
 <?php
 /**
- * Button Component
- * 
+ * Button Component.
+ *
  * A reusable button component with various styles and sizes
- * 
+ *
  * @param string $text Button text
  * @param string $type Button type (primary, secondary, success, danger, warning, info, light, dark, link)
  * @param string $size Button size (sm, lg, default)

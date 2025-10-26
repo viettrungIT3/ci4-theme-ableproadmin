@@ -1,9 +1,9 @@
 <?php
 /**
- * Input Component
- * 
+ * Input Component.
+ *
  * A reusable input component for forms
- * 
+ *
  * @param string $name Input name
  * @param string $type Input type (text, email, password, number, tel, url, search, etc.)
  * @param string $value Input value
