@@ -26,6 +26,7 @@ $componentPaths = [
     ],
     'navigation' => [
         'breadcrumb' => 'components/navigation/breadcrumb.php',
+        'mobile-menu' => 'components/navigation/mobile-menu.php',
     ],
 ];
 
