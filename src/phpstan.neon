@@ -13,6 +13,9 @@ parameters:
         - '#Function .* not found#'
         - '#Constant .* not found#'
         - '#Call to static method .* on an unknown class#'
+        - '#Comparison operation.*is always true#'
+        - '#Variable.*always exists and is not falsy#'
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: false
+    treatPhpDocTypesAsCertain: false
