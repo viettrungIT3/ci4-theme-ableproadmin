@@ -63,29 +63,28 @@ $tableOptions = array_merge($defaultOptions, $options);
                 <div class="table-actions">
                     <?php if ($tableOptions['exportable']): ?>
                         <div class="dropdown">
-                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" 
-                                    type="button" 
-                                    data-bs-toggle="dropdown" 
-                                    aria-expanded="false">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="ti ti-download"></i> Export
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="#" onclick="exportTable('<?= esc($tableId) ?>', 'csv')">
-                                    <i class="ti ti-file-csv me-2"></i>CSV
-                                </a></li>
-                                <li><a class="dropdown-item" href="#" onclick="exportTable('<?= esc($tableId) ?>', 'excel')">
-                                    <i class="ti ti-file-excel me-2"></i>Excel
-                                </a></li>
+                                        <i class="ti ti-file-csv me-2"></i>CSV
+                                    </a></li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="exportTable('<?= esc($tableId) ?>', 'excel')">
+                                        <i class="ti ti-file-excel me-2"></i>Excel
+                                    </a></li>
                                 <li><a class="dropdown-item" href="#" onclick="exportTable('<?= esc($tableId) ?>', 'pdf')">
-                                    <i class="ti ti-file-pdf me-2"></i>PDF
-                                </a></li>
+                                        <i class="ti ti-file-pdf me-2"></i>PDF
+                                    </a></li>
                             </ul>
                         </div>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
-        
+
         <?php if ($tableOptions['searchable']): ?>
             <div class="card-body border-bottom">
                 <div class="row">
@@ -94,10 +93,8 @@ $tableOptions = array_merge($defaultOptions, $options);
                             <span class="input-group-text">
                                 <i class="ti ti-search"></i>
                             </span>
-                            <input type="text" 
-                                   class="form-control" 
-                                   id="<?= esc($tableId) ?>_search" 
-                                   placeholder="Search...">
+                            <input type="text" class="form-control" id="<?= esc($tableId) ?>_search"
+                                placeholder="Search...">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -114,14 +111,14 @@ $tableOptions = array_merge($defaultOptions, $options);
                 </div>
             </div>
         <?php endif; ?>
-        
+
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover mb-0" id="<?= esc($tableId) ?>">
                     <thead class="table-light">
                         <tr>
                             <?php foreach ($headers as $header): ?>
-                                <th class="<?= $header['sortable'] ? 'sortable' : '' ?>" 
+                                <th class="<?= $header['sortable'] ? 'sortable' : '' ?>"
                                     data-key="<?= esc($header['key']) ?>">
                                     <?= esc($header['label']) ?>
                                     <?php if ($header['sortable']): ?>
@@ -138,18 +135,16 @@ $tableOptions = array_merge($defaultOptions, $options);
                                     <td>
                                         <?php if ($header['key'] === 'actions'): ?>
                                             <div class="btn-group btn-group-sm">
-                                                <button class="btn btn-outline-primary" 
-                                                        onclick="editRow(<?= esc($row['id']) ?>)">
+                                                <button class="btn btn-outline-primary" onclick="editRow(<?= esc($row['id']) ?>)">
                                                     <i class="ti ti-edit"></i>
                                                 </button>
-                                                <button class="btn btn-outline-danger" 
-                                                        onclick="deleteRow(<?= esc($row['id']) ?>)">
+                                                <button class="btn btn-outline-danger" onclick="deleteRow(<?= esc($row['id']) ?>)">
                                                     <i class="ti ti-trash"></i>
                                                 </button>
                                             </div>
                                         <?php elseif ($header['key'] === 'status'): ?>
                                             <?php
-                                            $statusClass = match($row[$header['key']]) {
+                                            $statusClass = match ($row[$header['key']]) {
                                                 'Active' => 'badge bg-success',
                                                 'Inactive' => 'badge bg-danger',
                                                 'Pending' => 'badge bg-warning',
@@ -170,7 +165,7 @@ $tableOptions = array_merge($defaultOptions, $options);
                 </table>
             </div>
         </div>
-        
+
         <?php if ($tableOptions['pagination']): ?>
             <div class="card-footer">
                 <div class="d-flex align-items-center justify-content-between">
@@ -203,221 +198,221 @@ $tableOptions = array_merge($defaultOptions, $options);
 </div>
 
 <style>
-.data-table-widget .card {
-    border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    transition: all 0.3s ease;
-}
-
-.data-table-widget .card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-.data-table-widget .table th.sortable {
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-}
-
-.data-table-widget .table th.sortable:hover {
-    background-color: #e9ecef;
-}
-
-.data-table-widget .table th.sortable i {
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
-}
-
-.data-table-widget .table th.sortable:hover i {
-    opacity: 1;
-}
-
-.data-table-widget .table th.sortable.sorted i {
-    opacity: 1;
-    color: #0d6efd;
-}
-
-.data-table-widget .table tbody tr:hover {
-    background-color: #f8f9fa;
-}
-
-.data-table-widget .btn-group-sm .btn {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-}
-
-/* Dark theme support */
-[data-pc-theme="dark"] .data-table-widget .card {
-    background-color: #1a1a1a;
-    border: 1px solid #404040;
-}
-
-[data-pc-theme="dark"] .data-table-widget .card-header {
-    background-color: #2d2d2d;
-    border-bottom-color: #404040;
-}
-
-[data-pc-theme="dark"] .data-table-widget .card-title {
-    color: #e9ecef;
-}
-
-[data-pc-theme="dark"] .data-table-widget .table-light {
-    background-color: #2d2d2d;
-}
-
-[data-pc-theme="dark"] .data-table-widget .table-light th {
-    color: #e9ecef;
-    border-color: #404040;
-}
-
-[data-pc-theme="dark"] .data-table-widget .table td {
-    color: #e9ecef;
-    border-color: #404040;
-}
-
-[data-pc-theme="dark"] .data-table-widget .table tbody tr:hover {
-    background-color: #2d2d2d;
-}
-
-[data-pc-theme="dark"] .data-table-widget .card-footer {
-    background-color: #2d2d2d;
-    border-top-color: #404040;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .data-table-widget .card-header {
-        padding: 0.75rem 1rem;
+    .data-table-widget .card {
+        border: none;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        transition: all 0.3s ease;
     }
-    
-    .data-table-widget .card-body {
-        padding: 0.75rem 1rem;
+
+    .data-table-widget .card:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     }
-    
-    .data-table-widget .table-responsive {
-        font-size: 0.875rem;
+
+    .data-table-widget .table th.sortable {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
     }
-    
+
+    .data-table-widget .table th.sortable:hover {
+        background-color: #e9ecef;
+    }
+
+    .data-table-widget .table th.sortable i {
+        opacity: 0.5;
+        transition: opacity 0.2s ease;
+    }
+
+    .data-table-widget .table th.sortable:hover i {
+        opacity: 1;
+    }
+
+    .data-table-widget .table th.sortable.sorted i {
+        opacity: 1;
+        color: #0d6efd;
+    }
+
+    .data-table-widget .table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
     .data-table-widget .btn-group-sm .btn {
-        padding: 0.125rem 0.25rem;
-        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
     }
-}
+
+    /* Dark theme support */
+    [data-pc-theme="dark"] .data-table-widget .card {
+        background-color: #1a1a1a;
+        border: 1px solid #404040;
+    }
+
+    [data-pc-theme="dark"] .data-table-widget .card-header {
+        background-color: #2d2d2d;
+        border-bottom-color: #404040;
+    }
+
+    [data-pc-theme="dark"] .data-table-widget .card-title {
+        color: #e9ecef;
+    }
+
+    [data-pc-theme="dark"] .data-table-widget .table-light {
+        background-color: #2d2d2d;
+    }
+
+    [data-pc-theme="dark"] .data-table-widget .table-light th {
+        color: #e9ecef;
+        border-color: #404040;
+    }
+
+    [data-pc-theme="dark"] .data-table-widget .table td {
+        color: #e9ecef;
+        border-color: #404040;
+    }
+
+    [data-pc-theme="dark"] .data-table-widget .table tbody tr:hover {
+        background-color: #2d2d2d;
+    }
+
+    [data-pc-theme="dark"] .data-table-widget .card-footer {
+        background-color: #2d2d2d;
+        border-top-color: #404040;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .data-table-widget .card-header {
+            padding: 0.75rem 1rem;
+        }
+
+        .data-table-widget .card-body {
+            padding: 0.75rem 1rem;
+        }
+
+        .data-table-widget .table-responsive {
+            font-size: 0.875rem;
+        }
+
+        .data-table-widget .btn-group-sm .btn {
+            padding: 0.125rem 0.25rem;
+            font-size: 0.7rem;
+        }
+    }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const table = document.getElementById('<?= esc($tableId) ?>');
-    if (!table) return;
-    
-    let currentPage = 1;
-    let pageSize = <?= $tableOptions['pageSize'] ?>;
-    let currentData = <?= json_encode($data) ?>;
-    let filteredData = [...currentData];
-    let sortColumn = null;
-    let sortDirection = 'asc';
-    
-    // Initialize table
-    initializeTable();
-    
-    function initializeTable() {
-        // Search functionality
-        const searchInput = document.getElementById('<?= esc($tableId) ?>_search');
-        if (searchInput) {
-            searchInput.addEventListener('input', handleSearch);
-        }
-        
-        // Page size change
-        const pageSizeSelect = document.getElementById('<?= esc($tableId) ?>_pageSize');
-        if (pageSizeSelect) {
-            pageSizeSelect.addEventListener('change', handlePageSizeChange);
-        }
-        
-        // Sort functionality
-        const sortableHeaders = table.querySelectorAll('th.sortable');
-        sortableHeaders.forEach(header => {
-            header.addEventListener('click', () => handleSort(header));
-        });
-        
-        // Render table
-        renderTable();
-    }
-    
-    function handleSearch(e) {
-        const searchTerm = e.target.value.toLowerCase();
-        filteredData = currentData.filter(row => {
-            return Object.values(row).some(value => 
-                String(value).toLowerCase().includes(searchTerm)
-            );
-        });
-        currentPage = 1;
-        renderTable();
-    }
-    
-    function handlePageSizeChange(e) {
-        pageSize = parseInt(e.target.value);
-        currentPage = 1;
-        renderTable();
-    }
-    
-    function handleSort(header) {
-        const key = header.getAttribute('data-key');
-        
-        if (sortColumn === key) {
-            sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
-            sortColumn = key;
-            sortDirection = 'asc';
-        }
-        
-        // Update sort indicators
-        table.querySelectorAll('th.sortable').forEach(th => {
-            th.classList.remove('sorted');
-            th.querySelector('i').className = 'ti ti-arrows-sort ms-1';
-        });
-        
-        header.classList.add('sorted');
-        const icon = header.querySelector('i');
-        icon.className = sortDirection === 'asc' ? 'ti ti-arrow-up ms-1' : 'ti ti-arrow-down ms-1';
-        
-        // Sort data
-        filteredData.sort((a, b) => {
-            const aVal = a[key];
-            const bVal = b[key];
-            
-            if (typeof aVal === 'number' && typeof bVal === 'number') {
-                return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.getElementById('<?= esc($tableId) ?>');
+        if (!table) return;
+
+        let currentPage = 1;
+        let pageSize = <?= $tableOptions['pageSize'] ?>;
+        let currentData = <?= json_encode($data) ?>;
+        let filteredData = [...currentData];
+        let sortColumn = null;
+        let sortDirection = 'asc';
+
+        // Initialize table
+        initializeTable();
+
+        function initializeTable() {
+            // Search functionality
+            const searchInput = document.getElementById('<?= esc($tableId) ?>_search');
+            if (searchInput) {
+                searchInput.addEventListener('input', handleSearch);
             }
-            
-            const aStr = String(aVal).toLowerCase();
-            const bStr = String(bVal).toLowerCase();
-            
-            if (sortDirection === 'asc') {
-                return aStr.localeCompare(bStr);
+
+            // Page size change
+            const pageSizeSelect = document.getElementById('<?= esc($tableId) ?>_pageSize');
+            if (pageSizeSelect) {
+                pageSizeSelect.addEventListener('change', handlePageSizeChange);
+            }
+
+            // Sort functionality
+            const sortableHeaders = table.querySelectorAll('th.sortable');
+            sortableHeaders.forEach(header => {
+                header.addEventListener('click', () => handleSort(header));
+            });
+
+            // Render table
+            renderTable();
+        }
+
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            filteredData = currentData.filter(row => {
+                return Object.values(row).some(value =>
+                    String(value).toLowerCase().includes(searchTerm)
+                );
+            });
+            currentPage = 1;
+            renderTable();
+        }
+
+        function handlePageSizeChange(e) {
+            pageSize = parseInt(e.target.value);
+            currentPage = 1;
+            renderTable();
+        }
+
+        function handleSort(header) {
+            const key = header.getAttribute('data-key');
+
+            if (sortColumn === key) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
             } else {
-                return bStr.localeCompare(aStr);
+                sortColumn = key;
+                sortDirection = 'asc';
             }
-        });
-        
-        currentPage = 1;
-        renderTable();
-    }
-    
-    function renderTable() {
-        const startIndex = (currentPage - 1) * pageSize;
-        const endIndex = startIndex + pageSize;
-        const pageData = filteredData.slice(startIndex, endIndex);
-        
-        // Update table body
-        const tbody = table.querySelector('tbody');
-        tbody.innerHTML = '';
-        
-        pageData.forEach(row => {
-            const tr = document.createElement('tr');
-            <?php foreach ($headers as $header): ?>
-                const td<?= $header['key'] ?> = document.createElement('td');
-                <?php if ($header['key'] === 'actions'): ?>
-                    td<?= $header['key'] ?>.innerHTML = `
+
+            // Update sort indicators
+            table.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sorted');
+                th.querySelector('i').className = 'ti ti-arrows-sort ms-1';
+            });
+
+            header.classList.add('sorted');
+            const icon = header.querySelector('i');
+            icon.className = sortDirection === 'asc' ? 'ti ti-arrow-up ms-1' : 'ti ti-arrow-down ms-1';
+
+            // Sort data
+            filteredData.sort((a, b) => {
+                const aVal = a[key];
+                const bVal = b[key];
+
+                if (typeof aVal === 'number' && typeof bVal === 'number') {
+                    return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+                }
+
+                const aStr = String(aVal).toLowerCase();
+                const bStr = String(bVal).toLowerCase();
+
+                if (sortDirection === 'asc') {
+                    return aStr.localeCompare(bStr);
+                } else {
+                    return bStr.localeCompare(aStr);
+                }
+            });
+
+            currentPage = 1;
+            renderTable();
+        }
+
+        function renderTable() {
+            const startIndex = (currentPage - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const pageData = filteredData.slice(startIndex, endIndex);
+
+            // Update table body
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = '';
+
+            pageData.forEach(row => {
+                const tr = document.createElement('tr');
+                <?php foreach ($headers as $header): ?>
+                    const td<?= $header['key'] ?> = document.createElement('td');
+                    <?php if ($header['key'] === 'actions'): ?>
+                        td<?= $header['key'] ?>.innerHTML = `
                         <div class="btn-group btn-group-sm">
                             <button class="btn btn-outline-primary" onclick="editRow(${row.id})">
                                 <i class="ti ti-edit"></i>
@@ -427,119 +422,119 @@ document.addEventListener('DOMContentLoaded', function() {
                             </button>
                         </div>
                     `;
-                <?php elseif ($header['key'] === 'status'): ?>
-                    const statusClass = row.<?= $header['key'] ?> === 'Active' ? 'badge bg-success' : 
-                                      row.<?= $header['key'] ?> === 'Inactive' ? 'badge bg-danger' : 
-                                      row.<?= $header['key'] ?> === 'Pending' ? 'badge bg-warning' : 'badge bg-secondary';
-                    td<?= $header['key'] ?>.innerHTML = `<span class="${statusClass}">${row.<?= $header['key'] ?>}</span>`;
-                <?php else: ?>
-                    td<?= $header['key'] ?>.textContent = row.<?= $header['key'] ?> || '';
-                <?php endif; ?>
-                tr.appendChild(td<?= $header['key'] ?>);
-            <?php endforeach; ?>
-            tbody.appendChild(tr);
-        });
-        
-        // Update pagination
-        updatePagination();
-        
-        // Update info
-        updateInfo();
-    }
-    
-    function updatePagination() {
-        const totalPages = Math.ceil(filteredData.length / pageSize);
-        const pagination = document.getElementById('<?= esc($tableId) ?>_pagination');
-        if (!pagination) return;
-        
-        pagination.innerHTML = '';
-        
-        // Previous button
-        const prevLi = document.createElement('li');
-        prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
-        prevLi.innerHTML = `<a class="page-link" href="#" tabindex="-1">Previous</a>`;
-        prevLi.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentPage > 1) {
-                currentPage--;
-                renderTable();
-            }
-        });
-        pagination.appendChild(prevLi);
-        
-        // Page numbers
-        for (let i = 1; i <= totalPages; i++) {
-            const li = document.createElement('li');
-            li.className = `page-item ${i === currentPage ? 'active' : ''}`;
-            li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-            li.addEventListener('click', (e) => {
-                e.preventDefault();
-                currentPage = i;
-                renderTable();
+                    <?php elseif ($header['key'] === 'status'): ?>
+                        const statusClass = row.<?= $header['key'] ?> === 'Active' ? 'badge bg-success' :
+                            row.<?= $header['key'] ?> === 'Inactive' ? 'badge bg-danger' :
+                                row.<?= $header['key'] ?> === 'Pending' ? 'badge bg-warning' : 'badge bg-secondary';
+                        td<?= $header['key'] ?>.innerHTML = `<span class="${statusClass}">${row.<?= $header['key'] ?>}</span>`;
+                    <?php else: ?>
+                        td<?= $header['key'] ?>.textContent = row.<?= $header['key'] ?> || '';
+                    <?php endif; ?>
+                    tr.appendChild(td<?= $header['key'] ?>);
+                <?php endforeach; ?>
+                tbody.appendChild(tr);
             });
-            pagination.appendChild(li);
+
+            // Update pagination
+            updatePagination();
+
+            // Update info
+            updateInfo();
         }
-        
-        // Next button
-        const nextLi = document.createElement('li');
-        nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
-        nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
-        nextLi.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentPage < totalPages) {
-                currentPage++;
-                renderTable();
+
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredData.length / pageSize);
+            const pagination = document.getElementById('<?= esc($tableId) ?>_pagination');
+            if (!pagination) return;
+
+            pagination.innerHTML = '';
+
+            // Previous button
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `<a class="page-link" href="#" tabindex="-1">Previous</a>`;
+            prevLi.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                }
+            });
+            pagination.appendChild(prevLi);
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                li.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    renderTable();
+                });
+                pagination.appendChild(li);
             }
-        });
-        pagination.appendChild(nextLi);
-    }
-    
-    function updateInfo() {
-        const info = document.getElementById('<?= esc($tableId) ?>_info');
-        if (!info) return;
-        
-        const startIndex = (currentPage - 1) * pageSize + 1;
-        const endIndex = Math.min(currentPage * pageSize, filteredData.length);
-        const total = filteredData.length;
-        
-        info.textContent = `Showing ${startIndex} to ${endIndex} of ${total} entries`;
-    }
-});
 
-// Export functions
-function exportTable(tableId, format) {
-    const table = document.getElementById(tableId);
-    if (!table) return;
-    
-    // Simple CSV export
-    if (format === 'csv') {
-        const rows = Array.from(table.querySelectorAll('tr'));
-        const csvContent = rows.map(row => 
-            Array.from(row.querySelectorAll('td, th'))
-                .map(cell => `"${cell.textContent.trim()}"`)
-                .join(',')
-        ).join('\n');
-        
-        const blob = new Blob([csvContent], { type: 'text/csv' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `table-${tableId}.csv`;
-        link.click();
-        URL.revokeObjectURL(url);
-    }
-}
+            // Next button
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
+            nextLi.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderTable();
+                }
+            });
+            pagination.appendChild(nextLi);
+        }
 
-// Action functions
-function editRow(id) {
-    // Implement edit functionality
-    alert('Edit functionality for row ' + id + ' - to be implemented');
-}
+        function updateInfo() {
+            const info = document.getElementById('<?= esc($tableId) ?>_info');
+            if (!info) return;
 
-function deleteRow(id) {
-    if (confirm('Are you sure you want to delete this row?')) {
-        // Implement delete functionality
-        alert('Delete functionality for row ' + id + ' - to be implemented');
+            const startIndex = (currentPage - 1) * pageSize + 1;
+            const endIndex = Math.min(currentPage * pageSize, filteredData.length);
+            const total = filteredData.length;
+
+            info.textContent = `Showing ${startIndex} to ${endIndex} of ${total} entries`;
+        }
+    });
+
+    // Export functions
+    function exportTable(tableId, format) {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+
+        // Simple CSV export
+        if (format === 'csv') {
+            const rows = Array.from(table.querySelectorAll('tr'));
+            const csvContent = rows.map(row =>
+                Array.from(row.querySelectorAll('td, th'))
+                    .map(cell => `"${cell.textContent.trim()}"`)
+                    .join(',')
+            ).join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `table-${tableId}.csv`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
     }
-}
+
+    // Action functions
+    function editRow(id) {
+        // Implement edit functionality
+        alert('Edit functionality for row ' + id + ' - to be implemented');
+    }
+
+    function deleteRow(id) {
+        if (confirm('Are you sure you want to delete this row?')) {
+            // Implement delete functionality
+            alert('Delete functionality for row ' + id + ' - to be implemented');
+        }
+    }
 </script>
