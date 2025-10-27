@@ -24,7 +24,6 @@ $routes->group('dashboard', function ($routes) {
     // Demo theme
     $routes->get('/demo-theme', 'Web\Admin\DashboardDemo::index');
 
-
     // User management routes (view only - actions handled via API)
     $routes->group('users', function ($routes) {
         $routes->get('/', 'Web\Admin\Users::index');
