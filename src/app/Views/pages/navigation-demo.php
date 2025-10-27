@@ -34,8 +34,8 @@ Navigation Components Demo
                                 ['text' => 'Home', 'url' => base_url(), 'icon' => 'ti ti-home'],
                                 ['text' => 'Dashboard', 'url' => base_url('dashboard'), 'icon' => 'ti ti-dashboard'],
                                 ['text' => 'Users', 'url' => base_url('admin/users'), 'icon' => 'ti ti-users'],
-                                ['text' => 'Create User', 'active' => true, 'icon' => 'ti ti-user-plus']
-                            ]
+                                ['text' => 'Create User', 'active' => true, 'icon' => 'ti ti-user-plus'],
+                            ],
                         ]) ?>
 
                         <hr>
@@ -44,9 +44,9 @@ Navigation Components Demo
                         <?= $this->include('components/navigation/breadcrumb', [
                             'items' => [
                                 ['text' => 'Home', 'url' => base_url()],
-                                ['text' => 'Settings', 'active' => true]
+                                ['text' => 'Settings', 'active' => true],
                             ],
-                            'separator' => '>'
+                            'separator' => '>',
                         ]) ?>
 
                         <hr>
@@ -56,10 +56,10 @@ Navigation Components Demo
                             'items' => [
                                 ['text' => 'Home', 'url' => base_url(), 'icon' => 'ti ti-home'],
                                 ['text' => 'Admin', 'url' => base_url('admin'), 'icon' => 'ti ti-settings'],
-                                ['text' => 'Users', 'active' => true, 'icon' => 'ti ti-users']
+                                ['text' => 'Users', 'active' => true, 'icon' => 'ti ti-users'],
                             ],
                             'class' => 'custom-breadcrumb',
-                            'separator' => '→'
+                            'separator' => '→',
                         ]) ?>
                     </div>
                 </div>
