@@ -304,8 +304,9 @@ class NavigationHelper
         }
 
         // Mark last item as active
-        if (count($breadcrumbs) > 0) {
-            $breadcrumbs[count($breadcrumbs) - 1]['active'] = true;
+        if (!empty($breadcrumbs)) {
+            $lastIndex = count($breadcrumbs) - 1;
+            $breadcrumbs[$lastIndex]['active'] = true;
         }
 
         return $breadcrumbs;
