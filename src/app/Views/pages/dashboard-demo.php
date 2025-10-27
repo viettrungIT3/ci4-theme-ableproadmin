@@ -5,7 +5,6 @@
  * This page demonstrates the usage of dashboard widgets including
  * statistics, charts, and data tables.
  */
-
 $this->extend('layouts/admin');
 $this->section('content');
 ?>
