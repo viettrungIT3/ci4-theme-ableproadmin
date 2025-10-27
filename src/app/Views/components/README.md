@@ -15,6 +15,11 @@ A reusable component library for CI4 Theme Able Pro Admin based on Bootstrap 5.
 
 ### Forms
 - **Input** (`forms/input.php`) - Form input component with validation states
+- **Select** (`forms/select.php`) - Select dropdown component with customizable options
+- **Textarea** (`forms/textarea.php`) - Textarea component with character counting
+- **Checkbox** (`forms/checkbox.php`) - Checkbox component with custom styling
+- **Radio** (`forms/radio.php`) - Radio button group component with multiple layouts
+- **File Upload** (`forms/file-upload.php`) - File upload component with drag & drop
 
 ### Modals
 - **Modal** (`modals/modal.php`) - Modal dialog component
@@ -85,6 +90,60 @@ renderComponent('forms', 'input', [
     'state' => 'valid',
     'feedback' => 'Looks good!'
 ]);
+
+// Select dropdown
+renderComponent('forms', 'select', [
+    'name' => 'country',
+    'label' => 'Country',
+    'options' => [
+        'us' => 'United States',
+        'uk' => 'United Kingdom',
+        'ca' => 'Canada'
+    ],
+    'placeholder' => 'Select your country',
+    'required' => true
+]);
+
+// Textarea with character count
+renderComponent('forms', 'textarea', [
+    'name' => 'message',
+    'label' => 'Message',
+    'placeholder' => 'Enter your message...',
+    'rows' => 4,
+    'maxlength' => 500,
+    'help' => 'Maximum 500 characters'
+]);
+
+// Checkbox
+renderComponent('forms', 'checkbox', [
+    'name' => 'newsletter',
+    'label' => 'Subscribe to newsletter',
+    'checked' => true,
+    'help' => 'Receive updates about new features'
+]);
+
+// Radio buttons
+renderComponent('forms', 'radio', [
+    'name' => 'plan',
+    'label' => 'Choose your plan',
+    'options' => [
+        'basic' => 'Basic Plan - $9/month',
+        'pro' => 'Pro Plan - $29/month',
+        'enterprise' => 'Enterprise Plan - $99/month'
+    ],
+    'value' => 'pro',
+    'layout' => 'vertical'
+]);
+
+// File upload
+renderComponent('forms', 'file-upload', [
+    'name' => 'images',
+    'label' => 'Upload Images',
+    'accept' => 'image/*',
+    'multiple' => true,
+    'maxSize' => 10485760, // 10MB
+    'help' => 'Upload profile pictures or gallery images'
+]);
 ?>
 ```
 
@@ -142,6 +201,91 @@ renderComponent('forms', 'input', [
 - `feedback` - Validation feedback message
 - `icon` - Icon class
 - `iconPosition` - Icon position (left, right)
+- `class` - Additional CSS classes
+- `attributes` - Additional HTML attributes
+- `id` - Input ID
+
+### Select Component
+- `name` - Input name
+- `options` - Array of options (value => label)
+- `value` - Selected value
+- `label` - Label text
+- `placeholder` - Placeholder text
+- `help` - Help text
+- `required` - Whether field is required
+- `disabled` - Whether field is disabled
+- `multiple` - Whether multiple selection is allowed
+- `size` - Select size (sm, lg, default)
+- `state` - Validation state (valid, invalid, default)
+- `feedback` - Validation feedback message
+- `icon` - Icon class
+- `iconPosition` - Icon position (left, right)
+- `class` - Additional CSS classes
+- `attributes` - Additional HTML attributes
+- `id` - Input ID
+
+### Textarea Component
+- `name` - Input name
+- `value` - Textarea value
+- `label` - Label text
+- `placeholder` - Placeholder text
+- `help` - Help text
+- `required` - Whether field is required
+- `disabled` - Whether field is disabled
+- `readonly` - Whether field is readonly
+- `rows` - Number of rows
+- `cols` - Number of columns
+- `maxlength` - Maximum length
+- `size` - Textarea size (sm, lg, default)
+- `state` - Validation state (valid, invalid, default)
+- `feedback` - Validation feedback message
+- `class` - Additional CSS classes
+- `attributes` - Additional HTML attributes
+- `id` - Input ID
+
+### Checkbox Component
+- `name` - Input name
+- `value` - Checkbox value
+- `checked` - Whether checkbox is checked
+- `label` - Label text
+- `help` - Help text
+- `required` - Whether field is required
+- `disabled` - Whether field is disabled
+- `size` - Checkbox size (sm, lg, default)
+- `state` - Validation state (valid, invalid, default)
+- `feedback` - Validation feedback message
+- `class` - Additional CSS classes
+- `attributes` - Additional HTML attributes
+- `id` - Input ID
+
+### Radio Component
+- `name` - Input name
+- `options` - Array of radio options (value => label)
+- `value` - Selected value
+- `label` - Group label text
+- `help` - Help text
+- `required` - Whether field is required
+- `disabled` - Whether field is disabled
+- `size` - Radio size (sm, lg, default)
+- `state` - Validation state (valid, invalid, default)
+- `feedback` - Validation feedback message
+- `layout` - Layout style (vertical, horizontal, inline)
+- `class` - Additional CSS classes
+- `attributes` - Additional HTML attributes
+- `id` - Input ID prefix
+
+### File Upload Component
+- `name` - Input name
+- `label` - Label text
+- `help` - Help text
+- `required` - Whether field is required
+- `disabled` - Whether field is disabled
+- `multiple` - Whether multiple files are allowed
+- `accept` - Accepted file types (e.g., "image/*", ".pdf,.doc")
+- `maxSize` - Maximum file size in bytes
+- `size` - Input size (sm, lg, default)
+- `state` - Validation state (valid, invalid, default)
+- `feedback` - Validation feedback message
 - `class` - Additional CSS classes
 - `attributes` - Additional HTML attributes
 - `id` - Input ID
