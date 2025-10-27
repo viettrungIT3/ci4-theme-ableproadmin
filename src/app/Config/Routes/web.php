@@ -21,6 +21,10 @@ $routes->group('dashboard', function ($routes) {
     $routes->get('/analytics', 'Web\Admin\Dashboard::analytics');
     $routes->get('/finance', 'Web\Admin\Dashboard::finance');
 
+    // Demo theme
+    $routes->get('/demo-theme', 'Web\Admin\DashboardDemo::index');
+
+
     // User management routes (view only - actions handled via API)
     $routes->group('users', function ($routes) {
         $routes->get('/', 'Web\Admin\Users::index');

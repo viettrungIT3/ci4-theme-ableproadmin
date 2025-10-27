@@ -5,7 +5,6 @@
  * This page demonstrates the usage of advanced form components including
  * select, textarea, checkbox, radio, and file upload components.
  */
-
 $this->extend('layouts/admin');
 $this->section('content');
 ?>
