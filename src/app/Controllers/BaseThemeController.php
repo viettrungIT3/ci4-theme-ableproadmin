@@ -31,6 +31,7 @@ abstract class BaseThemeController extends BaseController
         $this->data = array_merge($this->data, $data);
         $layoutData = $this->data;
         $layoutData['content'] = view($view, $this->data);
+        $layoutData['test'] = 'test value';
 
         return view("layouts/{$layout}", $layoutData);
     }

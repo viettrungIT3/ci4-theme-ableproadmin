@@ -31,6 +31,7 @@
             <!-- [ Main Content ] start -->
             <div class="row">
                 <div class="col-sm-12">
+                    <!-- Debug: <?= $test ?? 'no test' ?> -->
                     <?= $content ?>
                 </div>
             </div>
