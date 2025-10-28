@@ -14,6 +14,11 @@ class SamplePage extends BaseThemeController
             ['title' => 'Sample Page', 'url' => base_url('sample-page')],
         ]);
 
-        return $this->renderAdminView('pages/sample-page');
+        $data = [
+            'pageTitle' => $this->getPageTitle(),
+            'breadcrumb' => $this->getBreadcrumb(),
+        ];
+
+        return $this->renderAdminView('pages/sample-page', $data);
     }
 }
