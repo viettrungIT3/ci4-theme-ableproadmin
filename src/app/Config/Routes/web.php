@@ -22,7 +22,12 @@ $routes->group('dashboard', function ($routes) {
     $routes->get('/finance', 'Web\Admin\Dashboard::finance');
 
     // Demo theme
-    $routes->get('/demo-theme', 'Web\Admin\DashboardDemo::index');
+    $routes->group('demo', function ($routes) {
+        $routes->get('demo-theme', 'Web\Admin\DashboardDemo::index');
+        $routes->get('form-demo', 'Web\Admin\FormDemo::index');
+        $routes->get('advanced-ui-demo', 'Web\Admin\AdvancedUiDemo::index');
+        $routes->get('sample-page', 'Web\Admin\SamplePage::index');
+    });
 
     // User management routes (view only - actions handled via API)
     $routes->group('users', function ($routes) {
@@ -42,8 +47,3 @@ $routes->group('auth', function ($routes) {
     $routes->post('register', 'Web\Auth\Register::process');
     $routes->get('logout', 'Web\Auth\Login::logout');
 });
-
-// Demo routes
-$routes->get('/form-demo', 'Web\Admin\FormDemo::index');
-$routes->get('/advanced-ui-demo', 'Web\Admin\AdvancedUiDemo::index');
-$routes->get('/sample-page', 'Web\Admin\SamplePage::index');
