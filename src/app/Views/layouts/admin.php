@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?= view('partials/head', $data) ?>
+    <?= view('partials/head') ?>
 </head>
 
 <body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-layout="vertical" data-pc-direction="ltr"
@@ -14,18 +14,18 @@
     <!-- [ Pre-loader ] End -->
 
     <!-- [ Sidebar Menu ] start -->
-    <?= view('components/sidebar', $data) ?>
+    <?= view('components/sidebar') ?>
     <!-- [ Sidebar Menu ] end -->
 
     <!-- [ Header Topbar ] start -->
-    <?= view('components/header', $data) ?>
+    <?= view('components/header') ?>
     <!-- [ Header ] end -->
 
     <!-- [ Main Content ] start -->
     <div class="pc-container">
         <div class="pc-content">
             <!-- [ breadcrumb ] start -->
-            <?= view('components/breadcrumb', $data) ?>
+            <?= view('components/breadcrumb') ?>
             <!-- [ breadcrumb ] end -->
 
             <!-- [ Main Content ] start -->
@@ -40,15 +40,15 @@
     <!-- [ Main Content ] end -->
 
     <!-- [ Footer ] start -->
-    <?= view('components/footer', $data) ?>
+    <?= view('components/footer') ?>
     <!-- [ Footer ] end -->
 
     <!-- [ Settings Panel ] start -->
-    <?= view('components/settings-panel', $data) ?>
+    <?= view('components/settings-panel') ?>
     <!-- [ Settings Panel ] end -->
 
     <!-- Required Js -->
-    <?= view('partials/scripts', $data) ?>
+    <?= view('partials/scripts') ?>
 </body>
 
 </html>
