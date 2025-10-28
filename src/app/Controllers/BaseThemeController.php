@@ -33,6 +33,9 @@ abstract class BaseThemeController extends BaseController
         $layoutData['content'] = view($view, $this->data);
         $layoutData['test'] = 'test value';
 
+        // Extract variables for layout
+        extract($layoutData);
+
         return view("layouts/{$layout}", $layoutData);
     }
 
