@@ -5,6 +5,10 @@
  * This page demonstrates the usage of advanced UI components including
  * progress bars, loading spinners, tooltips, tabs, accordions, carousels, and image galleries.
  */
+
+// Include component library
+include APPPATH . 'Views/components/index.php';
+
 $this->extend('layouts/admin');
 $this->section('content');
 ?>

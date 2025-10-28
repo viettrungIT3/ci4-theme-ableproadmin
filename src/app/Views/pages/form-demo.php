@@ -5,6 +5,10 @@
  * This page demonstrates the usage of advanced form components including
  * select, textarea, checkbox, radio, and file upload components.
  */
+
+// Include component library
+include APPPATH . 'Views/components/index.php';
+
 $this->extend('layouts/admin');
 $this->section('content');
 ?>

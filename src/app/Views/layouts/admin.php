@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Debug: <?= $test ?? 'no test' ?> -->
-                    <?= $content ?>
+                    <?= $content ?? '' ?>
                 </div>
             </div>
             <!-- [ Main Content ] end -->
