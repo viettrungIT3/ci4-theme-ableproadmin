@@ -20,6 +20,11 @@ $componentPaths = [
     ],
     'forms' => [
         'input' => 'components/forms/input.php',
+        'select' => 'components/forms/select.php',
+        'textarea' => 'components/forms/textarea.php',
+        'checkbox' => 'components/forms/checkbox.php',
+        'radio' => 'components/forms/radio.php',
+        'file-upload' => 'components/forms/file-upload.php',
     ],
     'modals' => [
         'modal' => 'components/modals/modal.php',
