@@ -1,11 +1,11 @@
 <!-- [Head] start -->
-<title><?= $pageTitle ?? 'Dashboard' ?> | <?= $config->appName ?? 'CI4 Admin' ?></title>
+<title><?= $pageTitle ?? 'Dashboard' ?> | CI4 Admin</title>
 
 <!-- [Meta] -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="<?= $config->appName ?? 'CI4 Admin' ?> - Modern admin dashboard">
+<meta name="description" content="CI4 Admin - Modern admin dashboard">
 <meta name="keywords" content="admin dashboard, bootstrap admin, php admin, codeigniter admin">
 <meta name="author" content="CI4 Admin">
 
