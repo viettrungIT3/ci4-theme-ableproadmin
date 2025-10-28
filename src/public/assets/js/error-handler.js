@@ -7,6 +7,7 @@
  * ErrorHandler.showValidationError(errors);
  */
 
+if (!window.ErrorHandler) {
 class ErrorHandler {
     static handle(error, context = '') {
         console.error('Error in', context, ':', error);
@@ -195,3 +196,4 @@ window.addEventListener('error', function(event) {
 
 // Make available globally
 window.ErrorHandler = ErrorHandler;
+}

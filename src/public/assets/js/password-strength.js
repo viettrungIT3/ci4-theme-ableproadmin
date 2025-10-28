@@ -6,6 +6,7 @@
  * PasswordStrength.check('password123');
  */
 
+if (!window.PasswordStrength) {
 class PasswordStrength {
     static init(selector) {
         const passwordInput = document.querySelector(selector);
@@ -121,3 +122,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Make available globally
 window.PasswordStrength = PasswordStrength;
+}
