@@ -33,10 +33,19 @@ abstract class BaseThemeController extends BaseController
         $layoutData['content'] = view($view, $this->data);
         $layoutData['test'] = 'test value';
 
+        // Start output buffering
+        ob_start();
+        
         // Extract variables for layout
         extract($layoutData);
-
-        return view("layouts/{$layout}", $layoutData);
+        
+        // Include layout
+        include APPPATH . "Views/layouts/{$layout}.php";
+        
+        // Get output
+        $output = ob_get_clean();
+        
+        return $output;
     }
 
     /**
