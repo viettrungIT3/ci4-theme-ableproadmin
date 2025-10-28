@@ -33,6 +33,15 @@ $componentPaths = [
         'breadcrumb' => 'components/navigation/breadcrumb.php',
         'mobile-menu' => 'components/navigation/mobile-menu.php',
     ],
+    'ui' => [
+        'progress-bar' => 'components/ui/progress-bar.php',
+        'loading-spinner' => 'components/ui/loading-spinner.php',
+        'tooltip' => 'components/ui/tooltip.php',
+        'tabs' => 'components/ui/tabs.php',
+        'accordion' => 'components/ui/accordion.php',
+        'carousel' => 'components/ui/carousel.php',
+        'image-gallery' => 'components/ui/image-gallery.php',
+    ],
 ];
 
 /**

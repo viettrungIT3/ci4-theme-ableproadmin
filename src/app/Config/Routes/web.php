@@ -42,3 +42,8 @@ $routes->group('auth', function ($routes) {
     $routes->post('register', 'Web\Auth\Register::process');
     $routes->get('logout', 'Web\Auth\Login::logout');
 });
+
+// Demo routes
+$routes->get('/form-demo', 'Web\Admin\FormDemo::index');
+$routes->get('/advanced-ui-demo', 'Web\Admin\AdvancedUiDemo::index');
+$routes->get('/sample-page', 'Web\Admin\SamplePage::index');

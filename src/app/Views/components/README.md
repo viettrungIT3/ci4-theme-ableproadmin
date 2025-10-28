@@ -26,6 +26,21 @@ A reusable component library for CI4 Theme Able Pro Admin based on Bootstrap 5.
 
 ### Navigation
 - **Breadcrumb** (`navigation/breadcrumb.php`) - Breadcrumb navigation component
+- **Mobile Menu** (`navigation/mobile-menu.php`) - Full-screen overlay mobile menu
+
+### Widgets
+- **Statistic** (`widgets/statistic.php`) - Statistical data widget with icons and trends
+- **Chart** (`widgets/chart.php`) - Chart widget using Chart.js
+- **Data Table** (`widgets/data-table.php`) - Responsive data table with sorting and pagination
+
+### UI Components
+- **Progress Bar** (`ui/progress-bar.php`) - Progress bar component with animations and customization
+- **Loading Spinner** (`ui/loading-spinner.php`) - Loading spinner with various sizes and colors
+- **Tooltip** (`ui/tooltip.php`) - Tooltip component with multiple triggers and placements
+- **Tabs** (`ui/tabs.php`) - Tabbed interface component with multiple variants
+- **Accordion** (`ui/accordion.php`) - Collapsible content sections
+- **Carousel** (`ui/carousel.php`) - Image carousel with controls and indicators
+- **Image Gallery** (`ui/image-gallery.php`) - Responsive image gallery with lightbox
 
 ## Usage
 
