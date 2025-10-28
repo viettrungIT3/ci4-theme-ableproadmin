@@ -15,8 +15,8 @@ class FormDemo extends BaseThemeController
         ]);
 
         $data = [
-            'pageTitle' => $this->getPageTitle(),
-            'breadcrumb' => $this->getBreadcrumb(),
+            'pageTitle' => $this->data['pageTitle'],
+            'breadcrumb' => $this->data['breadcrumb'],
         ];
 
         return $this->renderAdminView('pages/form-demo', $data);
