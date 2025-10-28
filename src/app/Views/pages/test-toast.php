@@ -98,9 +98,6 @@ echo ElementHelper::breadcrumb([
 </div>
 <!-- [ Test Toast ] end -->
 
-<!-- Load Simple Toast JS (no Bootstrap dependency) -->
-<script src="<?= base_url('assets/js/toast-simple.js') ?>"></script>
-
 <script>
     // Toast test page loaded
     // Toast object available: typeof Toast !== 'undefined'
