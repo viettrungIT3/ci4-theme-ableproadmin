@@ -30,10 +30,9 @@ abstract class BaseThemeController extends BaseController
     {
         $this->data = array_merge($this->data, $data);
 
-        return view("layouts/{$layout}", [
+        return view("layouts/{$layout}", array_merge($this->data, [
             'content' => view($view, $this->data),
-            'data' => $this->data,
-        ]);
+        ]));
     }
 
     /**
