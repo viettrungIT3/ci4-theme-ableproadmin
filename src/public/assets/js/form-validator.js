@@ -6,6 +6,7 @@
  * FormValidator.validate(formData, rules);
  */
 
+if (!window.FormValidator) {
 class FormValidator {
     static init(formSelector, rules = {}) {
         const form = document.querySelector(formSelector);
@@ -237,3 +238,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Make available globally
 window.FormValidator = FormValidator;
+}

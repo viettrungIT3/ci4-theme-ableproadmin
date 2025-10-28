@@ -31,8 +31,7 @@
             <!-- [ Main Content ] start -->
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- Debug: <?= $test ?? 'no test' ?> -->
-                    <?= $content ?? '' ?>
+                    <?= $this->renderSection('content') ?>
                 </div>
             </div>
             <!-- [ Main Content ] end -->

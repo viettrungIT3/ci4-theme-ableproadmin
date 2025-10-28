@@ -7,6 +7,7 @@
  * LoadingStates.setButtonLoading(button, 'Loading...');
  */
 
+if (!window.LoadingStates) {
 class LoadingStates {
     static show(element, options = {}) {
         const config = {
@@ -241,3 +242,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Make available globally
 window.LoadingStates = LoadingStates;
+}

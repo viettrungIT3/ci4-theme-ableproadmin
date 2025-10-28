@@ -14,6 +14,6 @@ class DashboardDemo extends BaseThemeController
             ['title' => 'Demo Theme', 'url' => base_url('dashboard/demo-theme')],
         ]);
 
-        return $this->renderAdminView('pages/dashboard/demo-theme');
+        return $this->renderView('pages/dashboard/demo-theme', [], 'demo');
     }
 }

@@ -33,6 +33,15 @@ $componentPaths = [
         'breadcrumb' => 'components/navigation/breadcrumb.php',
         'mobile-menu' => 'components/navigation/mobile-menu.php',
     ],
+    'ui' => [
+        'progress-bar' => 'components/ui/progress-bar.php',
+        'loading-spinner' => 'components/ui/loading-spinner.php',
+        'tooltip' => 'components/ui/tooltip.php',
+        'tabs' => 'components/ui/tabs.php',
+        'accordion' => 'components/ui/accordion.php',
+        'carousel' => 'components/ui/carousel.php',
+        'image-gallery' => 'components/ui/image-gallery.php',
+    ],
 ];
 
 /**
@@ -45,13 +54,54 @@ $componentPaths = [
  */
 function includeComponent($category, $component, $data = [])
 {
-    global $componentPaths;
+    // Component paths
+    $componentPaths = [
+        'buttons' => [
+            'button' => 'components/buttons/button.php',
+        ],
+        'cards' => [
+            'card' => 'components/cards/card.php',
+        ],
+        'alerts' => [
+            'alert' => 'components/alerts/alert.php',
+        ],
+        'forms' => [
+            'input' => 'components/forms/input.php',
+            'select' => 'components/forms/select.php',
+            'textarea' => 'components/forms/textarea.php',
+            'checkbox' => 'components/forms/checkbox.php',
+            'radio' => 'components/forms/radio.php',
+            'file-upload' => 'components/forms/file-upload.php',
+        ],
+        'modals' => [
+            'modal' => 'components/modals/modal.php',
+        ],
+        'navigation' => [
+            'breadcrumb' => 'components/navigation/breadcrumb.php',
+            'mobile-menu' => 'components/navigation/mobile-menu.php',
+        ],
+        'ui' => [
+            'progress-bar' => 'components/ui/progress-bar.php',
+            'loading-spinner' => 'components/ui/loading-spinner.php',
+            'tooltip' => 'components/ui/tooltip.php',
+            'tabs' => 'components/ui/tabs.php',
+            'accordion' => 'components/ui/accordion.php',
+            'carousel' => 'components/ui/carousel.php',
+            'image-gallery' => 'components/ui/image-gallery.php',
+        ],
+    ];
 
     if (!isset($componentPaths[$category][$component])) {
-        throw new Exception("Component {$category}/{$component} not found");
+        throw new Exception("Component {$category}/{$component} not found. Available: " . json_encode(array_keys($componentPaths)));
     }
 
     $componentPath = $componentPaths[$category][$component];
+    $fullPath = APPPATH . 'Views/' . $componentPath;
+
+    // Check if file exists
+    if (!file_exists($fullPath)) {
+        throw new Exception("Component file not found: {$fullPath}");
+    }
 
     // Extract data to variables
     extract($data);
@@ -60,7 +110,7 @@ function includeComponent($category, $component, $data = [])
     ob_start();
 
     // Include the component
-    include $componentPath;
+    include $fullPath;
 
     // Get the output
     $output = ob_get_clean();

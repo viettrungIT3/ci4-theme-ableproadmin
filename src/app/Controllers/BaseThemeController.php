@@ -29,11 +29,11 @@ abstract class BaseThemeController extends BaseController
     protected function renderView(string $view, array $data = [], string $layout = 'main'): string
     {
         $this->data = array_merge($this->data, $data);
+        $layoutData = $this->data;
+        $layoutData['content'] = view($view, $this->data);
+        $layoutData['test'] = 'test value';
 
-        return view("layouts/{$layout}", [
-            'content' => view($view, $this->data),
-            'data' => $this->data,
-        ]);
+        return view("layouts/{$layout}", $layoutData);
     }
 
     /**

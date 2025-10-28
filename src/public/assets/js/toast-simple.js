@@ -8,6 +8,7 @@
  * Toast.info('Information message');
  */
 
+if (!window.Toast) {
 class Toast {
     static show(message, type = 'info', options = {}) {
         const defaultOptions = {
@@ -147,5 +148,6 @@ class Toast {
 
 // Make Toast available globally
 window.Toast = Toast;
+}
 
 // Simple Toast system loaded

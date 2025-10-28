@@ -6,6 +6,7 @@
  * UsernameValidation.check('username123');
  */
 
+if (!window.UsernameValidation) {
 class UsernameValidation {
     static init(selector, options = {}) {
         const usernameInput = document.querySelector(selector);
@@ -127,3 +128,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Make available globally
 window.UsernameValidation = UsernameValidation;
+}
