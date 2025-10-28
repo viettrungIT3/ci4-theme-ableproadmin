@@ -4,7 +4,7 @@
  *
  * This page demonstrates the dashboard theme with various widgets and components.
  */
-$this->extend('layouts/admin');
+$this->extend('layouts/demo');
 $this->section('content');
 ?>
 

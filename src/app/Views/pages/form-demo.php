@@ -9,34 +9,16 @@
 // Include component library
 include APPPATH . 'Views/components/index.php';
 
-$this->extend('layouts/admin');
+$this->extend('layouts/demo');
 $this->section('content');
 ?>
 
 <div class="row">
     <div class="col-md-12">
-        <div class="page-header">
-            <div class="page-block">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <div class="page-header-title">
-                            <h5 class="m-b-10">Form Components Demo</h5>
-                        </div>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="<?= base_url() ?>">
-                                    <i class="feather icon-home"></i>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#!">Components</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#!">Form Components</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="card">
+            <div class="card-header">
+                <h5>Form Components Demo</h5>
+                <p class="text-muted mb-0">Advanced form components with validation and styling</p>
             </div>
         </div>
     </div>

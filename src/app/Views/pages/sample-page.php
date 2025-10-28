@@ -4,7 +4,7 @@
  *
  * This is a sample page demonstrating basic functionality.
  */
-$this->extend('layouts/admin');
+$this->extend('layouts/demo');
 $this->section('content');
 ?>
 

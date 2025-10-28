@@ -14,6 +14,6 @@ class FormDemo extends BaseThemeController
             ['title' => 'Form Demo', 'url' => base_url('form-demo')],
         ]);
 
-        return $this->renderAdminView('pages/form-demo');
+        return $this->renderView('pages/form-demo', [], 'demo');
     }
 }

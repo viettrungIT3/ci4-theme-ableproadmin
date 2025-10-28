@@ -9,7 +9,7 @@
 // Include component library
 include APPPATH . 'Views/components/index.php';
 
-$this->extend('layouts/admin');
+$this->extend('layouts/demo');
 $this->section('content');
 ?>
 
