@@ -14,11 +14,6 @@ class AdvancedUiDemo extends BaseThemeController
             ['title' => 'Advanced UI Demo', 'url' => base_url('advanced-ui-demo')],
         ]);
 
-        $data = [
-            'pageTitle' => $this->data['pageTitle'],
-            'breadcrumb' => $this->data['breadcrumb'],
-        ];
-
-        return $this->renderAdminView('pages/advanced-ui-demo', $data);
+        return $this->renderAdminView('pages/advanced-ui-demo');
     }
 }
