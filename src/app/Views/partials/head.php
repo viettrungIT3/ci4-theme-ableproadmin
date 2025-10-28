@@ -9,6 +9,9 @@
 <meta name="keywords" content="admin dashboard, bootstrap admin, php admin, codeigniter admin">
 <meta name="author" content="CI4 Admin">
 
+<!-- Ensure all relative assets resolve from site root -->
+<base href="<?= base_url('/') ?>">
+
 <!-- [Favicon] icon -->
 <link rel="icon" href="<?= $themePath ?>/assets/images/favicon.svg" type="image/x-icon">
 
