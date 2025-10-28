@@ -491,3 +491,23 @@
         <script src="<?= $js ?>"></script>
     <?php endforeach; ?>
 <?php endif; ?>
+
+<script>
+    // Prevent navigation for dummy anchors affected by <base href>
+    document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[href="#!"]');
+        if (link) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+    // Also normalize pure hash links
+    document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[href="#"]');
+        if (link) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+    // Prefer role=button for non-navigation anchors in future markup
+</script>
