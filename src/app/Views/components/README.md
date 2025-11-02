@@ -26,6 +26,12 @@ A reusable component library for CI4 Theme Able Pro Admin based on Bootstrap 5.
 
 ### Navigation
 - **Breadcrumb** (`navigation/breadcrumb.php`) - Breadcrumb navigation component
+- **Mobile Menu** (`navigation/mobile-menu.php`) - Full-screen overlay mobile menu
+
+### Widgets
+- **Statistic** (`widgets/statistic.php`) - Statistical data widget with icons and trends
+- **Chart** (`widgets/chart.php`) - Chart widget using Chart.js
+- **Data Table** (`widgets/data-table.php`) - Responsive data table with sorting and pagination
 
 ## Usage
 
@@ -310,6 +316,40 @@ renderComponent('forms', 'file-upload', [
 - `attributes` - Additional HTML attributes
 - `id` - Breadcrumb ID
 
+### Mobile Menu Component
+- `menuItems` - Array of menu items
+- `user` - User information array
+- `brandLogo` - Brand logo path
+- `brandUrl` - Brand logo URL
+
+### Statistic Widget
+- `title` - Widget title
+- `value` - Main value to display
+- `subtitle` - Subtitle or description
+- `icon` - Icon class or SVG
+- `trend` - Trend direction (up, down, neutral)
+- `trendValue` - Trend percentage or value
+- `color` - Color theme (primary, success, warning, danger, info)
+- `class` - Additional CSS classes
+- `animated` - Whether to show animated counter
+
+### Chart Widget
+- `title` - Chart title
+- `type` - Chart type (line, bar, doughnut, pie, area)
+- `data` - Chart data
+- `options` - Chart options
+- `height` - Chart height
+- `class` - Additional CSS classes
+- `chartId` - Unique chart ID
+
+### Data Table Widget
+- `title` - Table title
+- `headers` - Table headers array
+- `data` - Table data array
+- `options` - Table options
+- `class` - Additional CSS classes
+- `tableId` - Unique table ID
+
 ## Examples
 
 ### Button Examples
@@ -376,6 +416,55 @@ renderComponent('alerts', 'alert', [
 ]);
 ```
 
+### Widget Examples
+```php
+// Statistic widget
+renderComponent('widgets', 'statistic', [
+    'title' => 'Total Revenue',
+    'value' => '$45,678',
+    'subtitle' => 'Last 30 days',
+    'icon' => 'ti ti-currency-dollar',
+    'trend' => 'up',
+    'trendValue' => '+12.5%',
+    'color' => 'success'
+]);
+
+// Chart widget
+renderComponent('widgets', 'chart', [
+    'title' => 'Sales Analytics',
+    'type' => 'line',
+    'data' => [
+        'labels' => ['Jan', 'Feb', 'Mar'],
+        'datasets' => [
+            [
+                'label' => 'Sales',
+                'data' => [12000, 19000, 15000],
+                'borderColor' => '#0d6efd'
+            ]
+        ]
+    ],
+    'height' => '400px'
+]);
+
+// Data table widget
+renderComponent('widgets', 'data-table', [
+    'title' => 'Recent Orders',
+    'headers' => [
+        ['key' => 'id', 'label' => 'Order ID', 'sortable' => true],
+        ['key' => 'customer', 'label' => 'Customer', 'sortable' => true]
+    ],
+    'data' => [
+        ['id' => '#12345', 'customer' => 'John Doe'],
+        ['id' => '#12346', 'customer' => 'Jane Smith']
+    ],
+    'options' => [
+        'pageSize' => 10,
+        'searchable' => true,
+        'sortable' => true
+    ]
+]);
+```
+
 ## Styling
 
 All components are built with Bootstrap 5 classes and follow the Able Pro Admin theme styling. You can customize components by:
@@ -396,6 +485,7 @@ When adding new components:
 ## Dependencies
 
 - Bootstrap 5
+- Chart.js (for chart widgets)
 - Tabler Icons
 - Phosphor Icons
 - Feather Icons

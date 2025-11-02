@@ -33,6 +33,11 @@ $componentPaths = [
         'breadcrumb' => 'components/navigation/breadcrumb.php',
         'mobile-menu' => 'components/navigation/mobile-menu.php',
     ],
+    'widgets' => [
+        'statistic' => 'components/widgets/statistic.php',
+        'chart' => 'components/widgets/chart.php',
+        'data-table' => 'components/widgets/data-table.php',
+    ],
 ];
 
 /**
